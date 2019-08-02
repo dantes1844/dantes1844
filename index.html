@@ -198,7 +198,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -210,21 +210,6 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2019/08/02/hello-world/" class="title">Hello World</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-08-02T04:45:00.270Z" itemprop="datePublished">2019-08-02</time>
-              </p>
-            </div>
-          </li>
-          
           <li>
             
             <div class="item-inner">
@@ -252,68 +237,125 @@
   
   <main class="main" role="main">
   
-  <div class="content article-list">
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/02/hello-world/">Hello World</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2019/08/02/hello-world/" class="article-date">
-	  <time datetime="2019-08-02T04:45:00.270Z" itemprop="datePublished">Aug 2</time>
-	</a>
-</span>
+    <div class="content">
+  <article id="post-Keypoints-in-establishing-blog-by-Hexo-on-Github" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-    
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/08/02/hello-world/#comments" class="article-comment-link">Comments</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+    <div class="article-header">
+      
+        
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/08/01/Keypoints-in-establishing-blog-by-Hexo-on-Github/">hexo+github搭建博客关键点</a>
     </h1>
   
 
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
+      
+      <div class="article-meta">
+        <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/2019/08/01/Keypoints-in-establishing-blog-by-Hexo-on-Github/" class="article-date">
-	  <time datetime="2019-08-01T06:00:18.000Z" itemprop="datePublished">Aug 1</time>
+	  <time datetime="2019-08-01T06:00:18.000Z" itemprop="datePublished">2019-08-01</time>
 	</a>
 </span>
-    
-    
+        
+        
   <span class="article-tag">
     <i class="icon icon-tags"></i>
 	<a class="article-tag-link" href="/tags/Hexo/">Hexo</a>
   </span>
 
 
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/08/01/Keypoints-in-establishing-blog-by-Hexo-on-Github/#comments" class="article-comment-link">Comments</a></span>
-    
-  </p>
-</article>
+        
 
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/08/01/Keypoints-in-establishing-blog-by-Hexo-on-Github/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="1-参考以下内容："><a href="#1-参考以下内容：" class="headerlink" title="1. 参考以下内容："></a>1. 参考以下内容：</h3><p>1.<a href="https://www.jianshu.com/p/eded1dd2d794" target="_blank" rel="noopener">简书</a></p>
+<p>2.<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo官网</a></p>
+<p>3.<a href="https://hexo.io/zh-cn/docs/deployment" target="_blank" rel="noopener">Hexo官网部署文档</a></p>
+<p>4.<a href="https://blog.csdn.net/qq32933432/article/details/87955133" target="_blank" rel="noopener">解决Hexo在Github上部署后个人页面404的问题</a></p>
+<h3 id="2-主要步骤及相关脚本"><a href="#2-主要步骤及相关脚本" class="headerlink" title="2. 主要步骤及相关脚本"></a>2. 主要步骤及相关脚本</h3><ol>
+<li>安装Hexo脚手架 </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>初始化一个Hexo项目，名称为<code>blog</code> </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>切换到项目文件夹里 </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>执行安装，<strong><em>这一步的作用是啥我也不知道，需要研究下官方文档</em></strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>启动博客程序，会打开默认端口4000.在浏览器里输入<code>http://localhost:4000</code>即可访问了。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>执行清理旧的文件并发布新的</li>
+</ol>
+<pre><code class="bash">hexo clean &amp;&amp; hexo deploy</code></pre>
+<h3 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3. 注意事项"></a>3. 注意事项</h3><p>1.配置文件(_config.yml)的键值对之间有个空格</p>
+<p>2.Github的Repository的名字一定是自己的用户名+”.github.io”格式,例如我的就是”dantes1844.github.io”.</p>
+<h3 id="4-版本控制"><a href="#4-版本控制" class="headerlink" title="4. 版本控制"></a>4. 版本控制</h3><p>参考两篇文章</p>
+<p><a href="https://www.zhihu.com/question/21193762/answer/79109280" target="_blank" rel="noopener">1.使用hexo，如果换了电脑怎么更新博客？ - CrazyMilk的回答 - 知乎</a></p>
+<p><a href="https://www.jianshu.com/p/fceaf373d797" target="_blank" rel="noopener">2.hexo博客同步管理及迁移 - 简书</a></p>
+<p>其实第二篇文章也是参考第一个的，不过它的解释更详细，让人明白为什么要这样做。我是看他的文章知道原理，然后按照第一个的步骤实现代码上传的。囧~~</p>
+<p>另外，如果使用Hexo主题，从Github上更新的代码，在主题文件夹里，相应的主题包下面的.git文件要删掉，否则该文件夹下面的代码无法正常提交到Github。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
     
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://dantes1844.github.io/2019/08/01/Keypoints-in-establishing-blog-by-Hexo-on-Github/" title="hexo+github搭建博客关键点" target="_blank" rel="external">http://dantes1844.github.io/2019/08/01/Keypoints-in-establishing-blog-by-Hexo-on-Github/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dantes1844" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dantes1844" target="_blank"><span class="text-dark">Dantes</span><small class="ml-1x">Web Developer</small></a></h3>
+        <div>一只老鸟，希望还能飞翔。</div>
+      </div>
+    </figure>
   </div>
+</div>
+
+
+    </div>
+  </article>
+  
+</div>
+
+  
 
    
 </main>
