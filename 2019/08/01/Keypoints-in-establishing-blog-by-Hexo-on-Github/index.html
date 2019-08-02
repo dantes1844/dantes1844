@@ -18,18 +18,18 @@
   
   
   <title>hexo+github搭建博客关键点 | Edmond Dantes</title>
-  <meta name="description" content="1. 参考以下内容：1.简书 2.Hexo官网 3.Hexo官网部署文档 4.解决Hexo在Github上部署后个人页面404的问题 2. 主要步骤及相关脚本 安装Hexo脚手架   1npm install hexo-cli -g   初始化一个Hexo项目，名称为blog   1hexo init blog   切换到项目文件夹里   1cd blog   执行安装，这一步的作用是啥我也不知道">
+  <meta name="description" content="1. 参考以下内容：1.简书 2.Hexo官网 3.Hexo官网部署文档 4.解决Hexo在Github上部署后个人页面404的问题 2. 主要步骤及相关脚本 安装Hexo脚手架   1npm install hexo-cli -g   初始化一个Hexo项目，名称为blog   1hexo init blog   切换到项目文件夹里   1cd blog   下载依赖的node包  1npm i">
 <meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo+github搭建博客关键点">
 <meta property="og:url" content="http://dantes1844.github.io/2019/08/01/Keypoints-in-establishing-blog-by-Hexo-on-Github/index.html">
 <meta property="og:site_name" content="Live,Work,Pose">
-<meta property="og:description" content="1. 参考以下内容：1.简书 2.Hexo官网 3.Hexo官网部署文档 4.解决Hexo在Github上部署后个人页面404的问题 2. 主要步骤及相关脚本 安装Hexo脚手架   1npm install hexo-cli -g   初始化一个Hexo项目，名称为blog   1hexo init blog   切换到项目文件夹里   1cd blog   执行安装，这一步的作用是啥我也不知道">
+<meta property="og:description" content="1. 参考以下内容：1.简书 2.Hexo官网 3.Hexo官网部署文档 4.解决Hexo在Github上部署后个人页面404的问题 2. 主要步骤及相关脚本 安装Hexo脚手架   1npm install hexo-cli -g   初始化一个Hexo项目，名称为blog   1hexo init blog   切换到项目文件夹里   1cd blog   下载依赖的node包  1npm i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-02T05:19:51.932Z">
+<meta property="og:updated_time" content="2019-08-02T06:13:03.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github搭建博客关键点">
-<meta name="twitter:description" content="1. 参考以下内容：1.简书 2.Hexo官网 3.Hexo官网部署文档 4.解决Hexo在Github上部署后个人页面404的问题 2. 主要步骤及相关脚本 安装Hexo脚手架   1npm install hexo-cli -g   初始化一个Hexo项目，名称为blog   1hexo init blog   切换到项目文件夹里   1cd blog   执行安装，这一步的作用是啥我也不知道">
+<meta name="twitter:description" content="1. 参考以下内容：1.简书 2.Hexo官网 3.Hexo官网部署文档 4.解决Hexo在Github上部署后个人页面404的问题 2. 主要步骤及相关脚本 安装Hexo脚手架   1npm install hexo-cli -g   初始化一个Hexo项目，名称为blog   1hexo init blog   切换到项目文件夹里   1cd blog   下载依赖的node包  1npm i">
   <!-- Canonical links -->
   <link rel="canonical" href="http://dantes1844.github.io/2019/08/01/Keypoints-in-establishing-blog-by-Hexo-on-Github/index.html">
   
@@ -298,7 +298,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br></pre></td></tr></table></figure>
 
 <ol start="4">
-<li>执行安装，<strong><em>这一步的作用是啥我也不知道，需要研究下官方文档</em></strong></li>
+<li>下载依赖的node包</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
 
@@ -310,9 +310,10 @@
 <ol start="6">
 <li>执行清理旧的文件并发布新的</li>
 </ol>
-<pre><code class="bash">hexo clean &amp;&amp; hexo deploy</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+
 <h3 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3. 注意事项"></a>3. 注意事项</h3><p>1.配置文件(_config.yml)的键值对之间有个空格</p>
-<p>2.Github的Repository的名字一定是自己的用户名+”.github.io”格式,例如我的就是”dantes1844.github.io”.</p>
+<p>2.Github的Repository的名字一定是自己的用户名+<code>.github.io</code>格式,例如我的就是<code>dantes1844.github.io</code>.</p>
 <h3 id="4-版本控制"><a href="#4-版本控制" class="headerlink" title="4. 版本控制"></a>4. 版本控制</h3><p>参考两篇文章</p>
 <p><a href="https://www.zhihu.com/question/21193762/answer/79109280" target="_blank" rel="noopener">1.使用hexo，如果换了电脑怎么更新博客？ - CrazyMilk的回答 - 知乎</a></p>
 <p><a href="https://www.jianshu.com/p/fceaf373d797" target="_blank" rel="noopener">2.hexo博客同步管理及迁移 - 简书</a></p>
