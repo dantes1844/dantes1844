@@ -34,7 +34,7 @@ hexo init blog
 cd blog
 ```
 
-4. 执行安装，***这一步的作用是啥我也不知道，需要研究下官方文档***
+4. 下载依赖的node包
 
 ```bash
 npm install
@@ -50,13 +50,13 @@ hexo server
 
 ```bash
 hexo clean && hexo deploy
-``` 
+```
 
 ### 3. 注意事项
 
 1.配置文件(_config.yml)的键值对之间有个空格
 	
-2.Github的Repository的名字一定是自己的用户名+".github.io"格式,例如我的就是"dantes1844.github.io".
+2.Github的Repository的名字一定是自己的用户名+`.github.io`格式,例如我的就是`dantes1844.github.io`.
 
 ### 4. 版本控制
 
