@@ -11,4 +11,4 @@ tags: [element-UI,Vue,javascript]
 
 
 
-![1.gif](https://upload-images.jianshu.io/upload_images/2665968-c7e9627459dcd11c.gif?imageMogr2/auto-orient/strip)
+![1.gif](https://github.com/dantes1844/dantes1844.github.io/blob/master/images/checkbox-bug.gif)
