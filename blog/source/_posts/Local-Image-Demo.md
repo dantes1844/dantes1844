@@ -1,7 +1,7 @@
 ---
 title: Local-Image-Demo
 date: 2019-08-07 13:12:03
-tags: [hexo,hexo-asset-image,javascript]
+tags: [Hexo,javascript]
 ---
 
 Just a test of using local image.
