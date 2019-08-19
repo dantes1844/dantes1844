@@ -17,21 +17,26 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>悠扬趣事记 | Edmond Dantes</title>
-  <meta name="description" content="2019年8月7日 昨晚睡前，我搂着悠悠，媳妇给她放一首歌，名字突然想不起来（似乎是《虫儿飞》）。她慢慢的咧着嘴，眼泪就流了下来。我问她为啥哭，她也不说。媳妇逗她玩，强行继续放这首歌，她居然自己用小拇指把耳朵塞着了。眼泪还是在默默的流。场面很好玩。 2019年8月5日 家里之前有两台笔记本电脑（现在是三台了），一台windows的是媳妇的工作笔记本，windows的安装了腾讯视频软件用来播放碧昂斯">
-<meta name="keywords" content="Youyang,生活">
+  <title>安装离线nuget包 | Edmond Dantes</title>
+  <meta name="description" content="Visual Studio 2013 的nuget包管理突然就不能使用了，周边的同事都试了，问题应该是公司的网络问题。 在 nuget 官网的包下载页面可以看到有离线包下载的功能，于是找了相关资料，记录下使用离线 nuget 包的使用方法. 参考连接：Stackoverflow  下载离线包    下载的包在本地文件存储下来。    Visual Studio 增加包下载的地址    安装包">
+<meta name="keywords" content="Visual Studio,Nuget">
 <meta property="og:type" content="article">
-<meta property="og:title" content="悠扬趣事记">
-<meta property="og:url" content="http://dantes1844.github.io/2019/08/05/Funny-Things-About-Baby-Youyang/index.html">
+<meta property="og:title" content="安装离线nuget包">
+<meta property="og:url" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/index.html">
 <meta property="og:site_name" content="Live,Work,Pose">
-<meta property="og:description" content="2019年8月7日 昨晚睡前，我搂着悠悠，媳妇给她放一首歌，名字突然想不起来（似乎是《虫儿飞》）。她慢慢的咧着嘴，眼泪就流了下来。我问她为啥哭，她也不说。媳妇逗她玩，强行继续放这首歌，她居然自己用小拇指把耳朵塞着了。眼泪还是在默默的流。场面很好玩。 2019年8月5日 家里之前有两台笔记本电脑（现在是三台了），一台windows的是媳妇的工作笔记本，windows的安装了腾讯视频软件用来播放碧昂斯">
+<meta property="og:description" content="Visual Studio 2013 的nuget包管理突然就不能使用了，周边的同事都试了，问题应该是公司的网络问题。 在 nuget 官网的包下载页面可以看到有离线包下载的功能，于是找了相关资料，记录下使用离线 nuget 包的使用方法. 参考连接：Stackoverflow  下载离线包    下载的包在本地文件存储下来。    Visual Studio 增加包下载的地址    安装包">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-07T04:38:24.023Z">
+<meta property="og:image" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/1.png">
+<meta property="og:image" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/2.png">
+<meta property="og:image" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/3.png">
+<meta property="og:image" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/4.png">
+<meta property="og:updated_time" content="2019-08-19T01:11:59.103Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="悠扬趣事记">
-<meta name="twitter:description" content="2019年8月7日 昨晚睡前，我搂着悠悠，媳妇给她放一首歌，名字突然想不起来（似乎是《虫儿飞》）。她慢慢的咧着嘴，眼泪就流了下来。我问她为啥哭，她也不说。媳妇逗她玩，强行继续放这首歌，她居然自己用小拇指把耳朵塞着了。眼泪还是在默默的流。场面很好玩。 2019年8月5日 家里之前有两台笔记本电脑（现在是三台了），一台windows的是媳妇的工作笔记本，windows的安装了腾讯视频软件用来播放碧昂斯">
+<meta name="twitter:title" content="安装离线nuget包">
+<meta name="twitter:description" content="Visual Studio 2013 的nuget包管理突然就不能使用了，周边的同事都试了，问题应该是公司的网络问题。 在 nuget 官网的包下载页面可以看到有离线包下载的功能，于是找了相关资料，记录下使用离线 nuget 包的使用方法. 参考连接：Stackoverflow  下载离线包    下载的包在本地文件存储下来。    Visual Studio 增加包下载的地址    安装包">
+<meta name="twitter:image" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://dantes1844.github.io/2019/08/05/Funny-Things-About-Baby-Youyang/index.html">
+  <link rel="canonical" href="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Live,Work,Pose" type="application/atom+xml">
   
@@ -184,7 +189,7 @@
   <div class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NInject/">NInject</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sybase/">Sybase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows10/">Windows10</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Youyang/">Youyang</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dropzone-js/">dropzone.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/element-UI/">element-UI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器/">过滤器</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NInject/">NInject</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nuget/">Nuget</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sybase/">Sybase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows10/">Windows10</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dropzone-js/">dropzone.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/element-UI/">element-UI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器/">过滤器</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -194,7 +199,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/C/" style="font-size: 13px;">C#</a> <a href="/tags/Entity-Framework/" style="font-size: 13px;">Entity Framework</a> <a href="/tags/Github/" style="font-size: 13px;">Github</a> <a href="/tags/Hexo/" style="font-size: 13.5px;">Hexo</a> <a href="/tags/IIS/" style="font-size: 13px;">IIS</a> <a href="/tags/JSON/" style="font-size: 13px;">JSON</a> <a href="/tags/MVC/" style="font-size: 13px;">MVC</a> <a href="/tags/NInject/" style="font-size: 13px;">NInject</a> <a href="/tags/Sybase/" style="font-size: 13px;">Sybase</a> <a href="/tags/Vue/" style="font-size: 13.5px;">Vue</a> <a href="/tags/Windows10/" style="font-size: 13px;">Windows10</a> <a href="/tags/Youyang/" style="font-size: 13px;">Youyang</a> <a href="/tags/dropzone-js/" style="font-size: 13px;">dropzone.js</a> <a href="/tags/element-UI/" style="font-size: 13.5px;">element-UI</a> <a href="/tags/javascript/" style="font-size: 14px;">javascript</a> <a href="/tags/感悟/" style="font-size: 13px;">感悟</a> <a href="/tags/生活/" style="font-size: 13px;">生活</a> <a href="/tags/过滤器/" style="font-size: 13px;">过滤器</a>
+      <a href="/tags/C/" style="font-size: 13px;">C#</a> <a href="/tags/Entity-Framework/" style="font-size: 13px;">Entity Framework</a> <a href="/tags/Github/" style="font-size: 13px;">Github</a> <a href="/tags/Hexo/" style="font-size: 13.5px;">Hexo</a> <a href="/tags/IIS/" style="font-size: 13px;">IIS</a> <a href="/tags/JSON/" style="font-size: 13px;">JSON</a> <a href="/tags/MVC/" style="font-size: 13px;">MVC</a> <a href="/tags/NInject/" style="font-size: 13px;">NInject</a> <a href="/tags/Nuget/" style="font-size: 13px;">Nuget</a> <a href="/tags/Sybase/" style="font-size: 13px;">Sybase</a> <a href="/tags/Visual-Studio/" style="font-size: 13px;">Visual Studio</a> <a href="/tags/Vue/" style="font-size: 13.5px;">Vue</a> <a href="/tags/Windows10/" style="font-size: 13px;">Windows10</a> <a href="/tags/dropzone-js/" style="font-size: 13px;">dropzone.js</a> <a href="/tags/element-UI/" style="font-size: 13.5px;">element-UI</a> <a href="/tags/javascript/" style="font-size: 14px;">javascript</a> <a href="/tags/感悟/" style="font-size: 13px;">感悟</a> <a href="/tags/过滤器/" style="font-size: 13px;">过滤器</a>
     </div>
   </div>
 
@@ -222,10 +227,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2019/08/07/Local-Image-Demo/" class="title">beach blur clouds dawn</a>
+                <a href="/2019/08/19/Install-Local-Nuget-Package/" class="title">安装离线nuget包</a>
               </p>
               <p class="item-date">
-                <time datetime="2019-08-07T05:12:03.000Z" itemprop="datePublished">2019-08-07</time>
+                <time datetime="2019-08-19T00:56:09.000Z" itemprop="datePublished">2019-08-19</time>
               </p>
             </div>
           </li>
@@ -237,10 +242,10 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2019/08/05/Funny-Things-About-Baby-Youyang/" class="title">悠扬趣事记</a>
+                <a href="/2019/08/07/Local-Image-Demo/" class="title">beach blur clouds dawn</a>
               </p>
               <p class="item-date">
-                <time datetime="2019-08-05T06:23:15.000Z" itemprop="datePublished">2019-08-05</time>
+                <time datetime="2019-08-07T05:12:03.000Z" itemprop="datePublished">2019-08-07</time>
               </p>
             </div>
           </li>
@@ -303,14 +308,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Funny-Things-About-Baby-Youyang" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Install-Local-Nuget-Package" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      悠扬趣事记
+      安装离线nuget包
     </h1>
   
 
@@ -318,31 +323,46 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/08/05/Funny-Things-About-Baby-Youyang/" class="article-date">
-	  <time datetime="2019-08-05T06:23:15.000Z" itemprop="datePublished">2019-08-05</time>
+	<a href="/2019/08/19/Install-Local-Nuget-Package/" class="article-date">
+	  <time datetime="2019-08-19T00:56:09.000Z" itemprop="datePublished">2019-08-19</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Youyang/">Youyang</a>, <a class="article-tag-link" href="/tags/生活/">生活</a>
+	<a class="article-tag-link" href="/tags/Nuget/">Nuget</a>, <a class="article-tag-link" href="/tags/Visual-Studio/">Visual Studio</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/08/05/Funny-Things-About-Baby-Youyang/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/08/19/Install-Local-Nuget-Package/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>2019年8月7日</p>
-<p>昨晚睡前，我搂着悠悠，媳妇给她放一首歌，名字突然想不起来（似乎是《虫儿飞》）。她慢慢的咧着嘴，眼泪就流了下来。我问她为啥哭，她也不说。媳妇逗她玩，强行继续放这首歌，她居然自己用小拇指把耳朵塞着了。眼泪还是在默默的流。场面很好玩。</p>
-<p>2019年8月5日</p>
-<p>家里之前有两台笔记本电脑（现在是三台了），一台windows的是媳妇的工作笔记本，windows的安装了腾讯视频软件用来播放碧昂斯的跳舞电影，一台MAC是存放照片的，时常用来播放以前的照片用。她已经能区分电脑分别是干什么的了。</p>
-<p>昨天媳妇拿windows电脑工作一会儿，悠扬趴低了凑着脑袋去屏幕背后找logo，笑嘻嘻的确认是碧昂斯电脑~~</p>
+        <p>Visual Studio 2013 的nuget包管理突然就不能使用了，周边的同事都试了，问题应该是公司的网络问题。</p>
+<p>在 <a href="https://www.nuget.org/" target="_blank" rel="noopener">nuget 官网</a>的包下载页面可以看到有离线包下载的功能，于是找了相关资料，记录下使用离线 <code>nuget</code> 包的使用方法.</p>
+<p>参考连接：<a href="https://stackoverflow.com/questions/10240029/how-do-i-install-a-nuget-package-nupkg-file-locally" target="_blank" rel="noopener">Stackoverflow</a></p>
+<ol>
+<li>下载离线包</li>
+</ol>
+<p><img src="1.png" alt="官网包页面找到下载连接"></p>
+<ol start="2">
+<li>下载的包在本地文件存储下来。</li>
+</ol>
+<p><img src="2.png" alt="存储文件到本地"></p>
+<ol start="3">
+<li>Visual Studio 增加包下载的地址</li>
+</ol>
+<p><img src="3.png" alt="Visual Studio相关设置"></p>
+<ol start="4">
+<li>安装包</li>
+</ol>
+<p><img src="4.png" alt="安装"></p>
+<p>需要注意的是：如果当前包依赖于其他的包，那么<code>nuget</code>管理器会首先去检查本地的路径有没有相关的包，有就使用本地的进行安装，否则还是会连接到<code>nuget</code>服务器去下载，所以在网络不通的情况下，依赖包也是需要提前下载好的。否则当前包依然会安装失败。</p>
 
       
     </div>
@@ -352,7 +372,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://dantes1844.github.io/2019/08/05/Funny-Things-About-Baby-Youyang/" title="悠扬趣事记" target="_blank" rel="external">http://dantes1844.github.io/2019/08/05/Funny-Things-About-Baby-Youyang/</a>
+      <a href="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/" title="安装离线nuget包" target="_blank" rel="external">http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -398,13 +418,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/08/07/Local-Image-Demo/" title="beach blur clouds dawn"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/08/03/Fuss/" title="无病呻吟没有用"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/08/07/Local-Image-Demo/" title="beach blur clouds dawn"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
