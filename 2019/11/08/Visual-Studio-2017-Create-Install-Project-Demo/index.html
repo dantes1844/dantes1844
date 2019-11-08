@@ -17,23 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>element UI CheckBox单击操作时一组的元素都被选中的问题 | Edmond Dantes</title>
-  <meta name="description" content="在重构项目时，有个功能是一组CheckBox的勾选功能，按官方实例：http://element-cn.eleme.io/#/zh-CN/component/checkbox，绑定上后台返回的数据时，在单击任何一个CheckBox时，这一组都被选中了，后来经过排查发现，原来后台返回的绑定数据是一个null值，将后台返回的数据改成空数组之后，一切恢复正常。">
-<meta name="keywords" content="element-UI,Vue,javascript">
+  <title>Visual Studio 2017 创建 Install Project笔记 | Edmond Dantes</title>
+  <meta name="description" content="1.建立Install Project项目过程VS2013的安装项目是一个exe工具，到了2017里，是一个插件了，需要在VS-扩展和更新里安装，或者下载VSIX包按照。 创新项目的过程并不是特别复杂，参考下面两篇文章。 参考连接1   参考链接2 2.建立完项目后不能编译的解决方法:我的Project插件版本是0.9.3 参考连接 12345The problem was resolved on">
+<meta name="keywords" content="C#,Install Project">
 <meta property="og:type" content="article">
-<meta property="og:title" content="element UI CheckBox单击操作时一组的元素都被选中的问题">
-<meta property="og:url" content="http://dantes1844.github.io/2019/04/11/Checkbox-Clicked-All-Elements-Are-Selected-Bug/index.html">
+<meta property="og:title" content="Visual Studio 2017 创建 Install Project笔记">
+<meta property="og:url" content="http://dantes1844.github.io/2019/11/08/Visual-Studio-2017-Create-Install-Project-Demo/index.html">
 <meta property="og:site_name" content="Live,Work,Pose">
-<meta property="og:description" content="在重构项目时，有个功能是一组CheckBox的勾选功能，按官方实例：http://element-cn.eleme.io/#/zh-CN/component/checkbox，绑定上后台返回的数据时，在单击任何一个CheckBox时，这一组都被选中了，后来经过排查发现，原来后台返回的绑定数据是一个null值，将后台返回的数据改成空数组之后，一切恢复正常。">
+<meta property="og:description" content="1.建立Install Project项目过程VS2013的安装项目是一个exe工具，到了2017里，是一个插件了，需要在VS-扩展和更新里安装，或者下载VSIX包按照。 创新项目的过程并不是特别复杂，参考下面两篇文章。 参考连接1   参考链接2 2.建立完项目后不能编译的解决方法:我的Project插件版本是0.9.3 参考连接 12345The problem was resolved on">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/dantes1844/dantes1844.github.io/blob/master/images/checkbox-bug.gif">
-<meta property="og:updated_time" content="2019-08-05T09:46:29.775Z">
+<meta property="og:updated_time" content="2019-11-08T02:26:27.991Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="element UI CheckBox单击操作时一组的元素都被选中的问题">
-<meta name="twitter:description" content="在重构项目时，有个功能是一组CheckBox的勾选功能，按官方实例：http://element-cn.eleme.io/#/zh-CN/component/checkbox，绑定上后台返回的数据时，在单击任何一个CheckBox时，这一组都被选中了，后来经过排查发现，原来后台返回的绑定数据是一个null值，将后台返回的数据改成空数组之后，一切恢复正常。">
-<meta name="twitter:image" content="https://github.com/dantes1844/dantes1844.github.io/blob/master/images/checkbox-bug.gif">
+<meta name="twitter:title" content="Visual Studio 2017 创建 Install Project笔记">
+<meta name="twitter:description" content="1.建立Install Project项目过程VS2013的安装项目是一个exe工具，到了2017里，是一个插件了，需要在VS-扩展和更新里安装，或者下载VSIX包按照。 创新项目的过程并不是特别复杂，参考下面两篇文章。 参考连接1   参考链接2 2.建立完项目后不能编译的解决方法:我的Project插件版本是0.9.3 参考连接 12345The problem was resolved on">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://dantes1844.github.io/2019/04/11/Checkbox-Clicked-All-Elements-Are-Selected-Bug/index.html">
+  <link rel="canonical" href="http://dantes1844.github.io/2019/11/08/Visual-Studio-2017-Create-Install-Project-Demo/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Live,Work,Pose" type="application/atom+xml">
   
@@ -305,14 +303,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Checkbox-Clicked-All-Elements-Are-Selected-Bug" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Visual-Studio-2017-Create-Install-Project-Demo" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      element UI CheckBox单击操作时一组的元素都被选中的问题
+      Visual Studio 2017 创建 Install Project笔记
     </h1>
   
 
@@ -320,28 +318,41 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/04/11/Checkbox-Clicked-All-Elements-Are-Selected-Bug/" class="article-date">
-	  <time datetime="2019-04-11T12:40:55.000Z" itemprop="datePublished">2019-04-11</time>
+	<a href="/2019/11/08/Visual-Studio-2017-Create-Install-Project-Demo/" class="article-date">
+	  <time datetime="2019-11-08T02:19:13.000Z" itemprop="datePublished">2019-11-08</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Vue/">Vue</a>, <a class="article-tag-link" href="/tags/element-UI/">element-UI</a>, <a class="article-tag-link" href="/tags/javascript/">javascript</a>
+	<a class="article-tag-link" href="/tags/C/">C#</a>, <a class="article-tag-link" href="/tags/Install-Project/">Install Project</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/04/11/Checkbox-Clicked-All-Elements-Are-Selected-Bug/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/08/Visual-Studio-2017-Create-Install-Project-Demo/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>在重构项目时，有个功能是一组CheckBox的勾选功能，按官方实例：<a href="http://element-cn.eleme.io/#/zh-CN/component/checkbox" target="_blank" rel="noopener">http://element-cn.eleme.io/#/zh-CN/component/checkbox</a>，绑定上后台返回的数据时，在单击任何一个CheckBox时，这一组都被选中了，后来经过排查发现，原来后台返回的绑定数据是一个null值，将后台返回的数据改成空数组之后，一切恢复正常。</p>
-<p><img src="https://github.com/dantes1844/dantes1844.github.io/blob/master/images/checkbox-bug.gif" alt="1.gif"></p>
+        <h4 id="1-建立Install-Project项目过程"><a href="#1-建立Install-Project项目过程" class="headerlink" title="1.建立Install Project项目过程"></a>1.建立Install Project项目过程</h4><p>VS2013的安装项目是一个exe工具，到了2017里，是一个插件了，需要在VS-扩展和更新里安装，或者下载VSIX包按照。</p>
+<p>创新项目的过程并不是特别复杂，参考下面两篇文章。</p>
+<p><a href="https://blog.csdn.net/dog123xuheyin/article/details/85008071" target="_blank" rel="noopener">参考连接1</a>   <a href="https://www.cnblogs.com/duanweishi/p/11114332.html" target="_blank" rel="noopener">参考链接2</a></p>
+<h3 id="2-建立完项目后不能编译的解决方法"><a href="#2-建立完项目后不能编译的解决方法" class="headerlink" title="2.建立完项目后不能编译的解决方法:"></a>2.建立完项目后不能编译的解决方法:</h3><p>我的Project插件版本是<code>0.9.3</code></p>
+<p><a href="https://stackoverflow.com/questions/44907844/windows-installer-project-in-visual-studio-2017" target="_blank" rel="noopener">参考连接</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The problem was resolved on an x64 system by running:</span><br><span class="line"></span><br><span class="line">regsvr32.exe /u <span class="string">"C:\Program Files (x86)\Common Files\microsoft shared\MSI Tools\mergemod.dll"</span></span><br><span class="line"></span><br><span class="line">regsvr32.exe <span class="string">"C:\Program Files (x86)\Common Files\microsoft shared\MSI Tools\mergemod.dll"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-生成了安装包之后，注册表的InstallLocation为空的解决办法。"><a href="#3-生成了安装包之后，注册表的InstallLocation为空的解决办法。" class="headerlink" title="3.生成了安装包之后，注册表的InstallLocation为空的解决办法。"></a>3.生成了安装包之后，注册表的<code>InstallLocation</code>为空的解决办法。</h3><p>两个办法的思路其实是一致的，增加自定义的安装类，重新默认的安装方法。</p>
+<p><a href="http://www.mikebevers.be/blog/2010/01/setup-project-product-installlocation-in-registry-is-empty/" target="_blank" rel="noopener">参考连接1,老外的方法</a></p>
+<p><a href="https://blog.csdn.net/smallbabylong/article/details/78756530" target="_blank" rel="noopener">参考连接2（这个参考连接2与安装里的参考连接2是同一个）</a></p>
+<p>最终代码，需要添加<code>using Microsoft.Win32;</code>的引用，另外还要添加<code>System.Configuration.Install</code>的引用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">[RunInstaller(true)]</span><br><span class="line">    public class InstallerPatch : Installer</span><br><span class="line">    &#123;</span><br><span class="line">        private const string Win64RegistryPath = @&quot;SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall&quot;;</span><br><span class="line">        private const string Win32RegistryPath = @&quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall&quot;;</span><br><span class="line"></span><br><span class="line">        public override void Install(IDictionary stateSaver)</span><br><span class="line">        &#123;</span><br><span class="line">            base.Install(stateSaver);</span><br><span class="line"></span><br><span class="line">            stateSaver.Add(&quot;TargetDir&quot;, Context.Parameters[&quot;DP_TargetDir&quot;]);</span><br><span class="line">            stateSaver.Add(&quot;ProductID&quot;, Context.Parameters[&quot;DP_ProductID&quot;]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public override void Commit(IDictionary savedState)</span><br><span class="line">        &#123;</span><br><span class="line">            base.Commit(savedState);</span><br><span class="line"></span><br><span class="line">            var productId = savedState[&quot;ProductID&quot;].ToString();</span><br><span class="line"></span><br><span class="line">            var applicationRegistry = Registry.LocalMachine.OpenSubKey($&quot;&#123;Win64RegistryPath&#125;\\&#123;productId&#125;&quot;, true);</span><br><span class="line"></span><br><span class="line">            if (applicationRegistry != null)</span><br><span class="line">            &#123;</span><br><span class="line">                applicationRegistry.SetValue(&quot;InstallLocation&quot;, savedState[&quot;TargetDir&quot;].ToString());</span><br><span class="line">                applicationRegistry.Close();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            applicationRegistry = Registry.LocalMachine.OpenSubKey($&quot;&#123;Win32RegistryPath&#125;\\&#123;productId&#125;&quot;, true);</span><br><span class="line"></span><br><span class="line">            if (applicationRegistry != null)</span><br><span class="line">            &#123;</span><br><span class="line">                applicationRegistry.SetValue(&quot;InstallLocation&quot;, savedState[&quot;TargetDir&quot;].ToString());</span><br><span class="line">                applicationRegistry.Close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考连接2里的方法始终不能正确执行，老外的链接是可以的。有个注意的地方是，老外重写的两个方法是Commit和Install，所以要在安装包的自定义的动作里分别指定这两个，并且两个的CustomAction都要进行设置。</p>
+<p>以上是几个关键点，昨天踩了一上午的坑，终于解决问题。记录下。</p>
 
       
     </div>
@@ -351,7 +362,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://dantes1844.github.io/2019/04/11/Checkbox-Clicked-All-Elements-Are-Selected-Bug/" title="element UI CheckBox单击操作时一组的元素都被选中的问题" target="_blank" rel="external">http://dantes1844.github.io/2019/04/11/Checkbox-Clicked-All-Elements-Are-Selected-Bug/</a>
+      <a href="http://dantes1844.github.io/2019/11/08/Visual-Studio-2017-Create-Install-Project-Demo/" title="Visual Studio 2017 创建 Install Project笔记" target="_blank" rel="external">http://dantes1844.github.io/2019/11/08/Visual-Studio-2017-Create-Install-Project-Demo/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -397,10 +408,10 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/04/20/Use-Third-Part-Icons-In-Element-UI/" title="（转）Vue Element使用icon图标(第三方)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
     
+    <li class="next">
+      <a href="/2019/10/10/github-fork-update-push-merge/" title="Github上fork代码并修改，之后提交到自己的版本库流程"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
     
   </ul>
