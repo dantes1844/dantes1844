@@ -134,13 +134,13 @@
 
 </li>
 </ol>
-<p>   生成的<code>api</code>默认路径是 <strong>/api/services/&lt;第二个参数&gt;/<service-name>/<method-name></method-name></service-name></strong></p>
+<p>   生成的<code>api</code>默认路径是 <strong>/api/services/&lt;第二个参数，默认是app&gt;/&lt;业务类名称&gt;/&lt;方法名称&gt;</strong></p>
 <h3 id="三-RemoteServiceAttribute-禁用服务类转成api接口"><a href="#三-RemoteServiceAttribute-禁用服务类转成api接口" class="headerlink" title="三.RemoteServiceAttribute 禁用服务类转成api接口"></a>三.RemoteServiceAttribute 禁用服务类转成api接口</h3><p><code>RemoteServiceAttribute</code>特性的适用范围：类，方法，接口。</p>
 <p>需要将该特性类的构造参数设置为<code>false</code>才是禁用，默认是<code>true</code>，也就是不禁用。</p>
 <ul>
 <li><p>指定的方法上打上该标签，那么该方法将被忽略生成<code>api</code>资源。</p>
 </li>
-<li><p>指定的类上打上该标签，那么类下面的所有方法都不会生成api资源，包括该类的父类<code>AsyncCrudAppService</code>下的几个默认的方法。</p>
+<li><p>指定的类上打上该标签，那么类下面的所有方法都不会生成<code>api</code>资源，包括该类的父类<code>AsyncCrudAppService</code>下的几个默认的方法。</p>
 </li>
 <li><p><strong><em>注意：指定的接口上打上该标签，不起作用。</em></strong></p>
 </li>
