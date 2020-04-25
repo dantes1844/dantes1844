@@ -2,6 +2,8 @@
 title: 陈奕迅的同曲不同词的歌曲记录
 date: 2019-08-20 20:38:08
 tags: [Eason]
+categories: 
+	- [涂鸦随笔]
 ---
 
 ![医生靓照镇楼](eason.jpg)

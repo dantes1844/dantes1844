@@ -2,6 +2,8 @@
 title: 安装离线nuget包
 date: 2019-08-19 08:56:09
 tags: [Visual Studio,Nuget]
+categories: 
+	- [工具]
 ---
 
 Visual Studio 2013 的nuget包管理突然就不能使用了，周边的同事都试了，问题应该是公司的网络故障。

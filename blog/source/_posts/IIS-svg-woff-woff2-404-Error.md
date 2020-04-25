@@ -2,6 +2,8 @@
 title: 【转载】解决Web部署 svg/woff/woff2字体 404错误
 date: 2019-06-11 17:23:32
 tags: [IIS]
+categories: 
+	- [工具]
 ---
 
 转载：https://www.cnblogs.com/hanwen/p/4212622.html

@@ -2,6 +2,8 @@
 title: Visual Studio 2017 创建 Install Project笔记
 date: 2019-11-08 10:19:13
 tags: [Install Project,C#]
+categories: 
+	- [工具]
 ---
 
 #### 1.建立Install Project项目过程

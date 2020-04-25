@@ -2,6 +2,8 @@
 title: Github上fork代码并修改，之后提交到自己的版本库流程
 date: 2019-10-10 14:13:47
 tags: [Github]
+categories: 
+	- [工具]
 ---
 
 1. fork 代码，在Github上操作即可。

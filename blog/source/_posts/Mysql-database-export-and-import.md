@@ -2,6 +2,8 @@
 title: MySQL的导出导入笔记
 date: 2019-09-03 20:44:13
 tags: [MySql]
+categories: 
+	- [数据库]
 ---
 
 计划将阿里云上的MySQL数据库导一份到本地。记录下踩坑过程。

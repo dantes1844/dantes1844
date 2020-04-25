@@ -2,6 +2,9 @@
 title: Visual_Studio_2019_ABP_Installation
 date: 2019-11-12 08:41:30
 tags: [ABP,ef core 3.0,.net core 3.0]
+categories: 
+	- [工具]	
+	- [框架]
 ---
 
 

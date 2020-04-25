@@ -2,6 +2,8 @@
 title: windows10 安装sybase报Microsoft VBScript 运行时错误 (0x800A0046) 没有权限的解决方案
 date: 2019-07-30 17:19:44
 tags: [Sybase,Windows10]
+categories: 
+	- [工具]
 ---
 执行脚本文件`CreateSybaseMenus.vbs`一直报题中的错误。
 文件的内容如下代码：

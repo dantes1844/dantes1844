@@ -2,6 +2,9 @@
 title: 【ABP框架笔记】2.ApplicationServices 生成web api
 date: 2020-04-25 14:39:05
 tags: [ABP,.net core 3.0,ef core 3.0]
+categories: 
+	- [框架]
+	- [Web]
 ---
 
 ### 一、Laobai.Application 业务层的配置

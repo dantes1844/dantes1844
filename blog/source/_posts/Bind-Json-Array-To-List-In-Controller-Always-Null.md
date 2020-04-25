@@ -2,6 +2,9 @@
 title: asp.net mvc 控制器list参数接收json传来的数组始终为空的问题
 date: 2019-05-06 22:37:36
 tags: [C#,MVC,JSON]
+categories: 
+	- [框架]
+	- [Web]
 ---
 
 

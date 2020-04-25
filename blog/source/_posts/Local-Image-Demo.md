@@ -2,6 +2,8 @@
 title: beach blur clouds dawn
 date: 2019-08-07 13:12:03
 tags: [Hexo,javascript]
+categories: 
+	- [工具]
 ---
 
 Just a test of using local image.

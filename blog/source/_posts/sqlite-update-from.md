@@ -2,6 +2,8 @@
 title: 数据库表关联更新脚本
 date: 2019-09-20 09:36:09
 tags: [sqlite,sql,SQL Server]
+categories: 
+	- [数据库]
 ---
 
 Sqlite3数据库表关联更新脚本:

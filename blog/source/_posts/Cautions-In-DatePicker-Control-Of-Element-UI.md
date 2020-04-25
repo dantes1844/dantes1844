@@ -2,6 +2,8 @@
 title: element-UI 日期控件（datepicker）回显的注意事项
 date: 2019-05-06 17:35:44
 tags: [javascript,element-UI,Vue]
+categories: 
+	- [前端]
 ---
 
 昨天在做一个有时间段选择的功能时，按照官方实例，如下代码

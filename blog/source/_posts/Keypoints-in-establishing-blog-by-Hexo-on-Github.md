@@ -2,6 +2,8 @@
 title: hexo+github搭建博客关键点
 date: 2019-08-01 14:00:18
 tags: Hexo
+categories: 
+	- [工具]
 ---
 
 ### 1. 参考以下内容：

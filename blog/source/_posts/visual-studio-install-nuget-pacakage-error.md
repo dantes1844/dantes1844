@@ -2,6 +2,8 @@
 title: Visual Studio 2017安装nuget包报错
 date: 2019-09-04 21:29:41
 tags: [Visual Studio, Nuget]
+categories: 
+	- [工具]
 ---
 
 ### ASP.NetCore 错误 NU1605 检测到包降级: Microsoft.AspnetCore.Mvc 从 2.2.0 降级到 2.1.1

@@ -2,6 +2,9 @@
 title: ABP 框架待学习列表
 date: 2020-04-25 14:17:30
 tags: [ABP,.net core 3.0,ef core 3.0]
+categories: 
+	- [框架]
+	- [Web]
 ---
 
 1. [Service方法转成api接口的过程](/2020/04/25/abp-services-as-webapi/)

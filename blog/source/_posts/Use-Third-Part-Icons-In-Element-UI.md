@@ -1,7 +1,9 @@
 ---
 title: （转）Vue Element使用icon图标(第三方)
 date: 2019-04-20 19:39:21
-tags:
+tags: [VUE,javascript]
+categories: 
+	- [前端]
 ---
 
 找不到文章的转载按钮，将连接附在下方吧。
