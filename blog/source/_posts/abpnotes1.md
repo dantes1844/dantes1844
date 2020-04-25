@@ -1,7 +1,7 @@
 ---
-title: 【ABP框架笔记】
+title: 【ABP框架笔记】下载示例代码，生成数据库表
 date: 2020-04-24 22:30:43
-tags: [abp,.net core 3.0,ef core 3.0]
+tags: [ABP,.net core 3.0,ef core 3.0]
 ---
 
 ## 一、官网下载示例代码，过程略
