@@ -100,7 +100,7 @@ public override void PreInitialize()
 
    
 
-   生成的`api`默认路径是 **/api/services/<第二个参数>/<service-name>/<method-name>**
+   生成的`api`默认路径是 **/api/services/<第二个参数，默认是app>/<业务类名称>/<方法名称>**
 
 
 
@@ -112,7 +112,7 @@ public override void PreInitialize()
 
 - 指定的方法上打上该标签，那么该方法将被忽略生成`api`资源。
 
-- 指定的类上打上该标签，那么类下面的所有方法都不会生成api资源，包括该类的父类`AsyncCrudAppService`下的几个默认的方法。
+- 指定的类上打上该标签，那么类下面的所有方法都不会生成`api`资源，包括该类的父类`AsyncCrudAppService`下的几个默认的方法。
 
 - ***注意：指定的接口上打上该标签，不起作用。***
 

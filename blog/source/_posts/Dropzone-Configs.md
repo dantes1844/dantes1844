@@ -2,7 +2,7 @@
 title: dropzone.js 修改提示消息
 date: 2019-06-05 17:30:58
 tags: [javascript,dropzone.js]
-categories：
+categories: 
 	- [前端]
 ---
 

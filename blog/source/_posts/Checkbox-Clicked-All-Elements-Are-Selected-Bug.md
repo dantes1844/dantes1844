@@ -2,7 +2,7 @@
 title: element UI CheckBox单击操作时一组的元素都被选中的问题
 date: 2019-04-11 20:40:55
 tags: [element-UI,Vue,javascript]
-categories：
+categories: 
 	- [前端]
 ---
 

@@ -2,7 +2,7 @@
 title: ninject +entity framework+控制器过滤器 dbcontext被释放的bug
 date: 2019-06-06 17:28:14
 tags: [Entity Framework,Ninject,过滤器]
-categories：
+categories: 
 	- [框架]
 ---
 
