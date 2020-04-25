@@ -17,26 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>安装离线nuget包 | Edmond Dantes</title>
-  <meta name="description" content="Visual Studio 2013 的nuget包管理突然就不能使用了，周边的同事都试了，问题应该是公司的网络故障。 在 nuget 官网 的包下载页面可以看到有离线包下载的功能，于是找了相关资料，记录下使用离线 nuget 包的使用方法. 参考连接：Stackoverflow  下载离线包    下载的包在本地文件存储下来。    Visual Studio 增加包下载的地址    安装包">
-<meta name="keywords" content="Visual Studio,Nuget">
+  <title>【ABP框架笔记】2.ApplicationServices 生成web api | Edmond Dantes</title>
+  <meta name="description" content="一、Laobai.Application 业务层的配置本层中会有一个LaobaiApplicationModule，该类继承自AbpModule，在Laobai.Web.Core中将使用该类作为配置的起点。 本层中放置全部的业务类，默认都继承自AsyncCrudAppService，AsyncCrudAppService以虚方法默认实现了几个通用的全局方法，如下：  GetAsync GetAll">
+<meta name="keywords" content="ABP,ef core 3.0,.net core 3.0">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装离线nuget包">
-<meta property="og:url" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/index.html">
+<meta property="og:title" content="【ABP框架笔记】2.ApplicationServices 生成web api">
+<meta property="og:url" content="http://dantes1844.github.io/2020/04/25/abp-services-as-webapi/index.html">
 <meta property="og:site_name" content="Live,Work,Pose">
-<meta property="og:description" content="Visual Studio 2013 的nuget包管理突然就不能使用了，周边的同事都试了，问题应该是公司的网络故障。 在 nuget 官网 的包下载页面可以看到有离线包下载的功能，于是找了相关资料，记录下使用离线 nuget 包的使用方法. 参考连接：Stackoverflow  下载离线包    下载的包在本地文件存储下来。    Visual Studio 增加包下载的地址    安装包">
+<meta property="og:description" content="一、Laobai.Application 业务层的配置本层中会有一个LaobaiApplicationModule，该类继承自AbpModule，在Laobai.Web.Core中将使用该类作为配置的起点。 本层中放置全部的业务类，默认都继承自AsyncCrudAppService，AsyncCrudAppService以虚方法默认实现了几个通用的全局方法，如下：  GetAsync GetAll">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/1.png">
-<meta property="og:image" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/2.png">
-<meta property="og:image" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/3.png">
-<meta property="og:image" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/4.png">
-<meta property="og:updated_time" content="2019-08-19T01:14:04.725Z">
+<meta property="og:updated_time" content="2020-04-25T09:30:57.075Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装离线nuget包">
-<meta name="twitter:description" content="Visual Studio 2013 的nuget包管理突然就不能使用了，周边的同事都试了，问题应该是公司的网络故障。 在 nuget 官网 的包下载页面可以看到有离线包下载的功能，于是找了相关资料，记录下使用离线 nuget 包的使用方法. 参考连接：Stackoverflow  下载离线包    下载的包在本地文件存储下来。    Visual Studio 增加包下载的地址    安装包">
-<meta name="twitter:image" content="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/1.png">
+<meta name="twitter:title" content="【ABP框架笔记】2.ApplicationServices 生成web api">
+<meta name="twitter:description" content="一、Laobai.Application 业务层的配置本层中会有一个LaobaiApplicationModule，该类继承自AbpModule，在Laobai.Web.Core中将使用该类作为配置的起点。 本层中放置全部的业务类，默认都继承自AsyncCrudAppService，AsyncCrudAppService以虚方法默认实现了几个通用的全局方法，如下：  GetAsync GetAll">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/index.html">
+  <link rel="canonical" href="http://dantes1844.github.io/2020/04/25/abp-services-as-webapi/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Live,Work,Pose" type="application/atom+xml">
   
@@ -308,14 +303,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Install-Local-Nuget-Package" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-abp-services-as-webapi" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      安装离线nuget包
+      【ABP框架笔记】2.ApplicationServices 生成web api
     </h1>
   
 
@@ -323,46 +318,90 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/08/19/Install-Local-Nuget-Package/" class="article-date">
-	  <time datetime="2019-08-19T00:56:09.000Z" itemprop="datePublished">2019-08-19</time>
+	<a href="/2020/04/25/abp-services-as-webapi/" class="article-date">
+	  <time datetime="2020-04-25T06:39:05.000Z" itemprop="datePublished">2020-04-25</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Nuget/">Nuget</a>, <a class="article-tag-link" href="/tags/Visual-Studio/">Visual Studio</a>
+	<a class="article-tag-link" href="/tags/net-core-3-0/">.net core 3.0</a>, <a class="article-tag-link" href="/tags/ABP/">ABP</a>, <a class="article-tag-link" href="/tags/ef-core-3-0/">ef core 3.0</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/08/19/Install-Local-Nuget-Package/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/25/abp-services-as-webapi/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>Visual Studio 2013 的nuget包管理突然就不能使用了，周边的同事都试了，问题应该是公司的网络故障。</p>
-<p>在 <a href="https://www.nuget.org/" target="_blank" rel="noopener">nuget 官网</a> 的包下载页面可以看到有离线包下载的功能，于是找了相关资料，记录下使用离线 <code>nuget</code> 包的使用方法.</p>
-<p>参考连接：<a href="https://stackoverflow.com/questions/10240029/how-do-i-install-a-nuget-package-nupkg-file-locally" target="_blank" rel="noopener">Stackoverflow</a></p>
+        <h3 id="一、Laobai-Application-业务层的配置"><a href="#一、Laobai-Application-业务层的配置" class="headerlink" title="一、Laobai.Application 业务层的配置"></a>一、Laobai.Application 业务层的配置</h3><p>本层中会有一个<code>LaobaiApplicationModule</code>，该类继承自<code>AbpModule</code>，在<code>Laobai.Web.Core</code>中将使用该类作为配置的起点。</p>
+<p>本层中放置全部的业务类，默认都继承自<code>AsyncCrudAppService</code>，<code>AsyncCrudAppService</code>以虚方法默认实现了几个通用的全局方法，如下：</p>
 <ol>
-<li>下载离线包</li>
+<li>GetAsync</li>
+<li>GetAllAsync</li>
+<li>CreateAsync</li>
+<li>UpdateAsync</li>
+<li>DeleteAsync</li>
+<li>GetEntityByIdAsync</li>
 </ol>
-<p><img src="1.png" alt="官网包页面找到下载连接"></p>
-<ol start="2">
-<li>下载的包在本地文件存储下来。</li>
+<p>以上方法会在默认的<code>api</code>中出现，在实现的时候，会将<code>Async</code>从方法名中去掉，最终<code>api</code>的方法类似于<code>GetAll</code>等。</p>
+<h3 id="二-全局配置service转为api"><a href="#二-全局配置service转为api" class="headerlink" title="二. 全局配置service转为api"></a>二. 全局配置service转为api</h3><p><a href="https://aspnetboilerplate.com/Pages/Documents/AspNet-Core" target="_blank" rel="noopener">官方文档</a> </p>
+<p>在<code>Laobai.Web.Core</code>项目里的<code>LaobaiWebCoreModule</code>中，有如下配置代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public override void PreInitialize()</span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line"></span><br><span class="line">            //配置动态web api </span><br><span class="line">            Configuration.Modules.AbpAspNetCore()</span><br><span class="line">                 .CreateControllersForAppServices(</span><br><span class="line">                     typeof(LaobaiApplicationModule).GetAssembly(), &quot;laobai&quot;</span><br><span class="line">                 );</span><br><span class="line">                 </span><br><span class="line">			...</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>CreateControllersForAppServices</code> 方法有三个参数：</p>
+<ol>
+<li><p>第一个参数是要转化为webapi的服务类所在的程序集。</p>
+</li>
+<li><p>第二个参数是要生成的webapi中的模块名称。默认使用的是<code>app</code>这个名字。</p>
+<blockquote>
+<p> 猜测：这里可以采用不同的模块名称，将不同的服务放到不同的webapi分类中。不过这样可能需要分程序集了，待验证？</p>
+</blockquote>
+</li>
+<li><p>第三个参数是根据方法名称使用约定的<code>http</code>请求动作，例如<code>Get</code>，<code>Post</code>，<code>Put</code>，<code>Delete</code>等，给的的默认值是<code>true</code>也就是要按照方法名生成不同的请求动作，如果是<code>false</code>，那么所有的动作默认为<code>post</code>请求。具体的实现代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var verb = configuration?.UseConventionalHttpVerbs == true</span><br><span class="line">                           ? ProxyScriptingHelper.GetConventionalVerbForMethodName(action.ActionName)</span><br><span class="line">                           : ProxyScriptingHelper.DefaultHttpVerb;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public static string GetConventionalVerbForMethodName(string methodName)</span><br><span class="line">&#123;</span><br><span class="line">    if (methodName.StartsWith(&quot;Get&quot;, StringComparison.OrdinalIgnoreCase))</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;GET&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (methodName.StartsWith(&quot;Put&quot;, StringComparison.OrdinalIgnoreCase) ||</span><br><span class="line">        methodName.StartsWith(&quot;Update&quot;, StringComparison.OrdinalIgnoreCase))</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;PUT&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (methodName.StartsWith(&quot;Delete&quot;, StringComparison.OrdinalIgnoreCase) ||</span><br><span class="line">        methodName.StartsWith(&quot;Remove&quot;, StringComparison.OrdinalIgnoreCase))</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;DELETE&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (methodName.StartsWith(&quot;Patch&quot;, StringComparison.OrdinalIgnoreCase))</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;PATCH&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (methodName.StartsWith(&quot;Post&quot;, StringComparison.OrdinalIgnoreCase) ||</span><br><span class="line">        methodName.StartsWith(&quot;Create&quot;, StringComparison.OrdinalIgnoreCase) ||</span><br><span class="line">        methodName.StartsWith(&quot;Insert&quot;, StringComparison.OrdinalIgnoreCase))</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;POST&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //Default</span><br><span class="line">    return DefaultHttpVerb;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
 </ol>
-<p><img src="2.png" alt="存储文件到本地"></p>
-<ol start="3">
-<li>Visual Studio 增加包下载的地址</li>
+<p>   生成的<code>api</code>默认路径是 <strong>/api/services/&lt;第二个参数&gt;/<service-name>/<method-name></method-name></service-name></strong></p>
+<h3 id="三-RemoteServiceAttribute-禁用服务类转成api接口"><a href="#三-RemoteServiceAttribute-禁用服务类转成api接口" class="headerlink" title="三.RemoteServiceAttribute 禁用服务类转成api接口"></a>三.RemoteServiceAttribute 禁用服务类转成api接口</h3><p><code>RemoteServiceAttribute</code>特性的适用范围：类，方法，接口。</p>
+<p>需要将该特性类的构造参数设置为<code>false</code>才是禁用，默认是<code>true</code>，也就是不禁用。</p>
+<ul>
+<li><p>指定的方法上打上该标签，那么该方法将被忽略生成<code>api</code>资源。</p>
+</li>
+<li><p>指定的类上打上该标签，那么类下面的所有方法都不会生成api资源，包括该类的父类<code>AsyncCrudAppService</code>下的几个默认的方法。</p>
+</li>
+<li><p><strong><em>注意：指定的接口上打上该标签，不起作用。</em></strong></p>
+</li>
+</ul>
+<h3 id="四、-使用HttpMethodAttribute设置资源动作"><a href="#四、-使用HttpMethodAttribute设置资源动作" class="headerlink" title="四、 使用HttpMethodAttribute设置资源动作"></a>四、 使用HttpMethodAttribute设置资源动作</h3><p><code>HttpMethodAttribute</code>包括以下几种标签。</p>
+<ul>
+<li>HttpGet</li>
+<li>HttpPut</li>
+<li>HttpDelete</li>
+<li>HttpHead</li>
+<li>HttpPost</li>
+<li>HttpOptions</li>
+<li>HttpPatch</li>
+</ul>
+<p>如果设置了<code>UseConventionalHttpVerbs</code>，那么会根据方法的开头来确定动作的类型， 如果方法的开头不包含默认的几种，则使用<code>Post</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[HttpGet]</span><br><span class="line">public async Task&lt;ListResultDto&lt;RoleDto&gt;&gt; LaobaiGetRoles()</span><br><span class="line">&#123;</span><br><span class="line">    var roles = await _roleRepository.GetAllListAsync();</span><br><span class="line">    return new ListResultDto&lt;RoleDto&gt;(ObjectMapper.Map&lt;List&lt;RoleDto&gt;&gt;(roles));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上示例代码使用<code>HttpGetAttribute</code>，可以指定非特定字符开头的方法为指定的资源动作。有两个事项：</p>
+<ol>
+<li>这个时候，客户端就能以<code>Get</code>方法获取<code>LaobaiGetRoles</code>这个资源了。</li>
+<li><code>HttpGet</code>的构造函数必须使用无参数的那个，否则会根据路由规则生成新的<code>api</code>地址，例如本例中就变成了 <code>/GetRoles</code>，没有与其他<code>api</code>一样的默认的前缀路径，客户端就会找不到资源。</li>
 </ol>
-<p><img src="3.png" alt="Visual Studio相关设置"></p>
-<ol start="4">
-<li>安装包</li>
-</ol>
-<p><img src="4.png" alt="安装"></p>
-<p>需要注意的是：如果当前包依赖于其他的包，那么<code>nuget</code>管理器会首先去检查本地的路径有没有相关的包，有就使用本地的进行安装，否则还是会连接到<code>nuget</code>服务器去下载，所以在网络不通的情况下，依赖包也是需要提前下载好的。否则当前包依然会安装失败。</p>
 
       
     </div>
@@ -372,7 +411,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/" title="安装离线nuget包" target="_blank" rel="external">http://dantes1844.github.io/2019/08/19/Install-Local-Nuget-Package/</a>
+      <a href="http://dantes1844.github.io/2020/04/25/abp-services-as-webapi/" title="【ABP框架笔记】2.ApplicationServices 生成web api" target="_blank" rel="external">http://dantes1844.github.io/2020/04/25/abp-services-as-webapi/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -418,13 +457,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/08/20/songs-of-eason/" title="陈奕迅的同曲不同词的歌曲记录"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/08/07/Local-Image-Demo/" title="beach blur clouds dawn"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/04/25/abp-problem-lists/" title="ABP 框架待学习列表"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
