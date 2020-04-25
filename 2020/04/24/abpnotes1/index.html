@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>【ABP框架笔记】 | Edmond Dantes</title>
+  <meta name="description" content="一、官网下载示例代码，过程略二、安装MySql EF 支持包，生成数据库表1.  安装EF Core的MySQL支持包在Laobai.EntityFrameworkCore项目的依赖项上右键，打开nuget管理工具，搜索 Pomelo.EntityFrameworkCore.MySql安装即可。 2. 修改代码的连接串，修改配置代码，并生成数据库表 修改appsettings.json的数据库连接">
+<meta name="keywords" content="ef core 3.0,.net core 3.0,abp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【ABP框架笔记】">
+<meta property="og:url" content="http://dantes1844.github.io/2020/04/24/abpnotes1/index.html">
+<meta property="og:site_name" content="Live,Work,Pose">
+<meta property="og:description" content="一、官网下载示例代码，过程略二、安装MySql EF 支持包，生成数据库表1.  安装EF Core的MySQL支持包在Laobai.EntityFrameworkCore项目的依赖项上右键，打开nuget管理工具，搜索 Pomelo.EntityFrameworkCore.MySql安装即可。 2. 修改代码的连接串，修改配置代码，并生成数据库表 修改appsettings.json的数据库连接">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-04-25T01:05:48.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【ABP框架笔记】">
+<meta name="twitter:description" content="一、官网下载示例代码，过程略二、安装MySql EF 支持包，生成数据库表1.  安装EF Core的MySQL支持包在Laobai.EntityFrameworkCore项目的依赖项上右键，打开nuget管理工具，搜索 Pomelo.EntityFrameworkCore.MySql安装即可。 2. 修改代码的连接串，修改配置代码，并生成数据库表 修改appsettings.json的数据库连接">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://dantes1844.github.io/2020/04/24/abpnotes1/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Live,Work,Pose" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/dantes1844" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Dantes</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Wuhan, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dantes1844" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/net-core-3-0/">.net core 3.0</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ABP/">ABP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eason/">Eason</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity-Framework/">Entity Framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IIS/">IIS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Install-Project/">Install Project</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySql/">MySql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NInject/">NInject</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nuget/">Nuget</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/">SQL Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sybase/">Sybase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows10/">Windows10</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/abp/">abp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dropzone-js/">dropzone.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ef-core-3-0/">ef core 3.0</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/element-UI/">element-UI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/">sqlite</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/过滤器/">过滤器</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/net-core-3-0/" style="font-size: 13.5px;">.net core 3.0</a> <a href="/tags/ABP/" style="font-size: 13px;">ABP</a> <a href="/tags/C/" style="font-size: 13.5px;">C#</a> <a href="/tags/Eason/" style="font-size: 13px;">Eason</a> <a href="/tags/Entity-Framework/" style="font-size: 13px;">Entity Framework</a> <a href="/tags/Github/" style="font-size: 13.5px;">Github</a> <a href="/tags/Hexo/" style="font-size: 13.5px;">Hexo</a> <a href="/tags/IIS/" style="font-size: 13px;">IIS</a> <a href="/tags/Install-Project/" style="font-size: 13px;">Install Project</a> <a href="/tags/JSON/" style="font-size: 13px;">JSON</a> <a href="/tags/MVC/" style="font-size: 13px;">MVC</a> <a href="/tags/MySql/" style="font-size: 13px;">MySql</a> <a href="/tags/NInject/" style="font-size: 13px;">NInject</a> <a href="/tags/Nuget/" style="font-size: 13.5px;">Nuget</a> <a href="/tags/SQL-Server/" style="font-size: 13px;">SQL Server</a> <a href="/tags/Sybase/" style="font-size: 13px;">Sybase</a> <a href="/tags/Visual-Studio/" style="font-size: 13.5px;">Visual Studio</a> <a href="/tags/Vue/" style="font-size: 13.5px;">Vue</a> <a href="/tags/Windows10/" style="font-size: 13px;">Windows10</a> <a href="/tags/abp/" style="font-size: 13px;">abp</a> <a href="/tags/dropzone-js/" style="font-size: 13px;">dropzone.js</a> <a href="/tags/ef-core-3-0/" style="font-size: 13.5px;">ef core 3.0</a> <a href="/tags/element-UI/" style="font-size: 13.5px;">element-UI</a> <a href="/tags/javascript/" style="font-size: 14px;">javascript</a> <a href="/tags/sql/" style="font-size: 13px;">sql</a> <a href="/tags/sqlite/" style="font-size: 13px;">sqlite</a> <a href="/tags/感悟/" style="font-size: 13px;">感悟</a> <a href="/tags/过滤器/" style="font-size: 13px;">过滤器</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/24/abpnotes1/" class="title">【ABP框架笔记】</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-24T14:30:43.000Z" itemprop="datePublished">2020-04-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/11/12/Visual-Studio-2019-ABP-Installation/" class="title">Visual_Studio_2019_ABP_Installation</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-11-12T00:41:30.000Z" itemprop="datePublished">2019-11-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/11/08/Visual-Studio-2017-Create-Install-Project-Demo/" class="title">Visual Studio 2017 创建 Install Project笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-11-08T02:19:13.000Z" itemprop="datePublished">2019-11-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/10/10/github-fork-update-push-merge/" class="title">Github上fork代码并修改，之后提交到自己的版本库流程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-10-10T06:13:47.000Z" itemprop="datePublished">2019-10-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/20/sqlite-update-from/" class="title">数据库表关联更新脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-20T01:36:09.000Z" itemprop="datePublished">2019-09-20</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-abpnotes1" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【ABP框架笔记】
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/04/24/abpnotes1/" class="article-date">
+	  <time datetime="2020-04-24T14:30:43.000Z" itemprop="datePublished">2020-04-24</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/net-core-3-0/">.net core 3.0</a>, <a class="article-tag-link" href="/tags/abp/">abp</a>, <a class="article-tag-link" href="/tags/ef-core-3-0/">ef core 3.0</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/24/abpnotes1/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="一、官网下载示例代码，过程略"><a href="#一、官网下载示例代码，过程略" class="headerlink" title="一、官网下载示例代码，过程略"></a>一、官网下载示例代码，过程略</h2><h2 id="二、安装MySql-EF-支持包，生成数据库表"><a href="#二、安装MySql-EF-支持包，生成数据库表" class="headerlink" title="二、安装MySql EF 支持包，生成数据库表"></a>二、安装MySql EF 支持包，生成数据库表</h2><h4 id="1-安装EF-Core的MySQL支持包"><a href="#1-安装EF-Core的MySQL支持包" class="headerlink" title="1.  安装EF Core的MySQL支持包"></a>1.  安装EF Core的MySQL支持包</h4><p>在<code>Laobai.EntityFrameworkCore</code>项目的依赖项上右键，打开<code>nuget</code>管理工具，搜索 <code>Pomelo.EntityFrameworkCore.MySql</code>安装即可。</p>
+<h4 id="2-修改代码的连接串，修改配置代码，并生成数据库表"><a href="#2-修改代码的连接串，修改配置代码，并生成数据库表" class="headerlink" title="2. 修改代码的连接串，修改配置代码，并生成数据库表"></a>2. 修改代码的连接串，修改配置代码，并生成数据库表</h4><ol>
+<li><p>修改<code>appsettings.json</code>的数据库连接字符串。删除<code>appsettings.json</code>中连接串中的<code>Trusted_Connection=True;</code>否则会报错，如下内容：</p>
+<blockquote>
+<p>Option ‘trusted_connection’ not supported.</p>
+</blockquote>
+</li>
+<li><p>修改<code>LaobaiDbContextConfigurer</code>里的两个方法，将原来的使用<code>SQLServer</code>的配置改成使用<code>MySQL</code>配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static void Configure(DbContextOptionsBuilder&lt;LaobaiDbContext&gt; builder, string connectionString)</span><br><span class="line">        &#123;</span><br><span class="line">            builder.UseMySql(connectionString);</span><br><span class="line">            //builder.UseSqlServer(connectionString);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public static void Configure(DbContextOptionsBuilder&lt;LaobaiDbContext&gt; builder, DbConnection connection)</span><br><span class="line">        &#123;</span><br><span class="line">            builder.UseMySql(connection);</span><br><span class="line">            //builder.UseSqlServer(connection);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>程序包管理控制台里，切换到<code>Laobai.EntityFrameworkCore</code>项目文件夹里，执行 <code>dotnet ef database update</code>准备生成相应的数据库表结构。这时报了一个错误，如下：</p>
+<blockquote>
+<p>The EF Core tools version ‘3.0.0’ is older than that of the runtime ‘3.1.1’. Update the tools for the latest features and bug fixes.</p>
+</blockquote>
+<p>执行 <code>dotnet ef -v</code>得到如下内容：</p>
+<blockquote>
+<p>Entity Framework Core .NET Command-line Tools<br>3.0.0</p>
+</blockquote>
+<p>执行<code>dotnet tool list -g</code>得到如下结果，这里如果没有后面的 <code>-g</code>全局标记，很可能是找不到这个工具的代码的。</p>
+<blockquote>
+<h2 id="包-ID-版本-命令"><a href="#包-ID-版本-命令" class="headerlink" title="包 ID           版本         命令"></a>包 ID           版本         命令</h2><p>dotnet-ef      3.0.0      dotnet-ef</p>
+</blockquote>
+<p> 执行升级命令<code>dotnet tool update dotnet-ef -g</code>，依然是全局升级，命令行的参数<code>dotnet-ef</code>就是上面查到的<code>ef core</code>的<code>ID</code></p>
+<p> 再次执行update数据的命令，依然报错，大概率是<code>datetime2</code>类型错误，这是因为默认的<code>migration</code>代码是<code>sqlserver</code>的，把旧的迁移文件移除，执行<code>dotnet ef migrations add initialmysqldatabase</code>生成新的迁移脚本，再执行命令，数据表生成成功。</p>
+</li>
+</ol>
+<p>此时，运行 <code>VS</code>,<code>Host</code>项目就能启动，打开<code>swagger</code>的界面了。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://dantes1844.github.io/2020/04/24/abpnotes1/" title="【ABP框架笔记】" target="_blank" rel="external">http://dantes1844.github.io/2020/04/24/abpnotes1/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/dantes1844" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/dantes1844" target="_blank"><span class="text-dark">Dantes</span><small class="ml-1x">Web Developer</small></a></h3>
+        <div>一只老鸟，希望还能飞翔。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2019/11/12/Visual-Studio-2019-ABP-Installation/" title="Visual_Studio_2019_ABP_Installation"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/dantes1844" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
