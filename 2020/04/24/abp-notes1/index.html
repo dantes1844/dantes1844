@@ -11,7 +11,7 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="ABP,.net core 3.0,ef core 3.0,">
+    <meta name="keywords" content="ABP,ef core 3.0,.net core 3.0,">
   
 
   
@@ -99,41 +99,35 @@
     </header>
 
     <div class="post-content">
-      <h2 id="一、官网下载示例代码，过程略"><a href="#一、官网下载示例代码，过程略" class="headerlink" title="一、官网下载示例代码，过程略"></a>一、官网下载示例代码，过程略</h2><h2 id="二、安装MySql-EF-支持包，生成数据库表"><a href="#二、安装MySql-EF-支持包，生成数据库表" class="headerlink" title="二、安装MySql EF 支持包，生成数据库表"></a>二、安装MySql EF 支持包，生成数据库表</h2><h4 id="1-安装EF-Core的MySQL支持包"><a href="#1-安装EF-Core的MySQL支持包" class="headerlink" title="1.  安装EF Core的MySQL支持包"></a>1.  安装EF Core的MySQL支持包</h4><p>在<code>Laobai.EntityFrameworkCore</code>项目的依赖项上右键，打开<code>nuget</code>管理工具，搜索 <code>Pomelo.EntityFrameworkCore.MySql</code>安装即可。</p>
-<h4 id="2-修改代码的连接串，修改配置代码，并生成数据库表"><a href="#2-修改代码的连接串，修改配置代码，并生成数据库表" class="headerlink" title="2. 修改代码的连接串，修改配置代码，并生成数据库表"></a>2. 修改代码的连接串，修改配置代码，并生成数据库表</h4><ol>
-<li><p>修改<code>appsettings.json</code>的数据库连接字符串。删除<code>appsettings.json</code>中连接串中的<code>Trusted_Connection=True;</code>否则会报错，如下内容：</p>
+      <h3 id="一、官网下载示例代码，过程略"><a href="#一、官网下载示例代码，过程略" class="headerlink" title="一、官网下载示例代码，过程略"></a>一、官网下载示例代码，过程略</h3><h3 id="二、安装MySql-EF-支持包，生成数据库表"><a href="#二、安装MySql-EF-支持包，生成数据库表" class="headerlink" title="二、安装MySql EF 支持包，生成数据库表"></a>二、安装MySql EF 支持包，生成数据库表</h3><h4 id="1-安装EF-Core的MySQL支持包"><a href="#1-安装EF-Core的MySQL支持包" class="headerlink" title="1. 安装EF Core的MySQL支持包"></a>1. 安装EF Core的MySQL支持包</h4><p>在<code>Laobai.EntityFrameworkCore</code>项目的依赖项上右键，打开<code>nuget</code>管理工具，搜索 <code>Pomelo.EntityFrameworkCore.MySql</code>安装即可。</p>
+<h4 id="2-修改代码的连接串，修改配置代码，并生成数据库表"><a href="#2-修改代码的连接串，修改配置代码，并生成数据库表" class="headerlink" title="2. 修改代码的连接串，修改配置代码，并生成数据库表"></a>2. 修改代码的连接串，修改配置代码，并生成数据库表</h4><h5 id="2-1-修改appsettings-json的数据库连接字符串。"><a href="#2-1-修改appsettings-json的数据库连接字符串。" class="headerlink" title="2.1 修改appsettings.json的数据库连接字符串。"></a>2.1 修改<code>appsettings.json</code>的数据库连接字符串。</h5><p>删除<code>appsettings.json</code>中连接串中的<code>Trusted_Connection=True;</code>否则会报错，如下内容：</p>
 <blockquote>
 <p>Option ‘trusted_connection’ not supported.</p>
 </blockquote>
-</li>
-<li><p>修改<code>LaobaiDbContextConfigurer</code>里的两个方法，将原来的使用<code>SQLServer</code>的配置改成使用<code>MySQL</code>配置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static void Configure(DbContextOptionsBuilder&lt;LaobaiDbContext&gt; builder, string connectionString)</span><br><span class="line">        &#123;</span><br><span class="line">            builder.UseMySql(connectionString);</span><br><span class="line">            //builder.UseSqlServer(connectionString);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public static void Configure(DbContextOptionsBuilder&lt;LaobaiDbContext&gt; builder, DbConnection connection)</span><br><span class="line">        &#123;</span><br><span class="line">            builder.UseMySql(connection);</span><br><span class="line">            //builder.UseSqlServer(connection);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>程序包管理控制台里，切换到<code>Laobai.EntityFrameworkCore</code>项目文件夹里，执行 <code>dotnet ef database update</code>准备生成相应的数据库表结构。这时报了一个错误，如下：</p>
+<h5 id="2-2-修改LaobaiDbContextConfigurer里的两个方法"><a href="#2-2-修改LaobaiDbContextConfigurer里的两个方法" class="headerlink" title="2.2 修改LaobaiDbContextConfigurer里的两个方法"></a>2.2 修改<code>LaobaiDbContextConfigurer</code>里的两个方法</h5><p>将原来的使用<code>SQLServer</code>的配置改成使用<code>MySQL</code>配置。</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static void Configure(DbContextOptionsBuilder&lt;LaobaiDbContext&gt; builder, string connectionString)</span><br><span class="line">        &#123;</span><br><span class="line">            builder.UseMySql(connectionString);</span><br><span class="line">            //builder.UseSqlServer(connectionString);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public static void Configure(DbContextOptionsBuilder&lt;LaobaiDbContext&gt; builder, DbConnection connection)</span><br><span class="line">        &#123;</span><br><span class="line">            builder.UseMySql(connection);</span><br><span class="line">            //builder.UseSqlServer(connection);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-3-升级数据库"><a href="#2-3-升级数据库" class="headerlink" title="2.3 升级数据库"></a>2.3 升级数据库</h5><p>程序包管理控制台里，切换到<code>Laobai.EntityFrameworkCore</code>项目文件夹里，执行 <code>dotnet ef database update</code>准备生成相应的数据库表结构。这时报了一个错误，如下：</p>
 <blockquote>
 <p>The EF Core tools version ‘3.0.0’ is older than that of the runtime ‘3.1.1’. Update the tools for the latest features and bug fixes.</p>
 </blockquote>
-<p>执行 <code>dotnet ef -v</code>得到如下内容：</p>
+<p>   执行 <code>dotnet ef -v</code>得到如下内容：</p>
 <blockquote>
 <p>Entity Framework Core .NET Command-line Tools<br>3.0.0</p>
 </blockquote>
 <p>执行<code>dotnet tool list -g</code>得到如下结果，这里如果没有后面的 <code>-g</code>全局标记，很可能是找不到这个工具的代码的。</p>
-<blockquote>
-<h2 id="包-ID-版本-命令"><a href="#包-ID-版本-命令" class="headerlink" title="包 ID           版本         命令"></a>包 ID           版本         命令</h2><p>dotnet-ef      3.0.0      dotnet-ef</p>
-</blockquote>
-<p> 执行升级命令<code>dotnet tool update dotnet-ef -g</code>，依然是全局升级，命令行的参数<code>dotnet-ef</code>就是上面查到的<code>ef core</code>的<code>ID</code></p>
-<p> 再次执行update数据的命令，依然报错，大概率是<code>datetime2</code>类型错误，这是因为默认的<code>migration</code>代码是<code>sqlserver</code>的，把旧的迁移文件移除，执行<code>dotnet ef migrations add initialmysqldatabase</code>生成新的迁移脚本，再执行命令，数据表生成成功。</p>
-</li>
-</ol>
-<p>此时，运行 <code>VS</code>,<code>Host</code>项目就能启动，打开<code>swagger</code>的界面了。</p>
-
+<pre><code>包 ID     版本  命令
+----
+dotnet-ef 3.0.0 dotnet-ef |</code></pre><p>执行升级命令<code>dotnet tool update dotnet-ef -g</code>，依然是全局升级，命令行的参数<code>dotnet-ef</code>就是上面查到的<code>ef core</code>的<code>ID</code></p>
+<p>再次执行update数据的命令，依然报错，大概率是<code>datetime2</code>类型错误，这是因为默认的<code>migration</code>代码是<code>sqlserver</code>的，把旧的迁移文件移除，执行<code>dotnet ef migrations add initialmysqldatabase</code>生成新的迁移脚本，再执行命令，数据表生成成功。</p>
+<h4 id="3-将启动项目设置为Host项目，运行-VS-就能顺利打开swagger的界面了。"><a href="#3-将启动项目设置为Host项目，运行-VS-就能顺利打开swagger的界面了。" class="headerlink" title="3. 将启动项目设置为Host项目，运行 VS,就能顺利打开swagger的界面了。"></a>3. 将启动项目设置为<code>Host</code>项目，运行 <code>VS</code>,就能顺利打开<code>swagger</code>的界面了。</h4>
     </div>
   </article>
   <div class="toc-container">
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、官网下载示例代码，过程略"><span class="toc-text">一、官网下载示例代码，过程略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、安装MySql-EF-支持包，生成数据库表"><span class="toc-text">二、安装MySql EF 支持包，生成数据库表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-安装EF-Core的MySQL支持包"><span class="toc-text">1.  安装EF Core的MySQL支持包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-修改代码的连接串，修改配置代码，并生成数据库表"><span class="toc-text">2. 修改代码的连接串，修改配置代码，并生成数据库表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包-ID-版本-命令"><span class="toc-text">包 ID           版本         命令</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、官网下载示例代码，过程略"><span class="toc-text">一、官网下载示例代码，过程略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、安装MySql-EF-支持包，生成数据库表"><span class="toc-text">二、安装MySql EF 支持包，生成数据库表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-安装EF-Core的MySQL支持包"><span class="toc-text">1. 安装EF Core的MySQL支持包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-修改代码的连接串，修改配置代码，并生成数据库表"><span class="toc-text">2. 修改代码的连接串，修改配置代码，并生成数据库表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-修改appsettings-json的数据库连接字符串。"><span class="toc-text">2.1 修改appsettings.json的数据库连接字符串。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-修改LaobaiDbContextConfigurer里的两个方法"><span class="toc-text">2.2 修改LaobaiDbContextConfigurer里的两个方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-升级数据库"><span class="toc-text">2.3 升级数据库</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-将启动项目设置为Host项目，运行-VS-就能顺利打开swagger的界面了。"><span class="toc-text">3. 将启动项目设置为Host项目，运行 VS,就能顺利打开swagger的界面了。</span></a></li></ol></li></ol>
   </div>
 
 
@@ -149,8 +143,8 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2019/11/12/Visual-Studio-2019-ABP-Installation/" rel="next" title="Visual_Studio_2019_ABP_Installation">
-          Visual_Studio_2019_ABP_Installation
+          <a href="/2019/11/12/Visual-Studio-2019-ABP-Installation/" rel="next" title="Visual Studio 2019 安装ABP项目">
+          Visual Studio 2019 安装ABP项目
           </a>
         
       </div>
