@@ -563,6 +563,7 @@ body {
 .post .post-content h6 {
   padding-top: 70px;
   margin-top: -56px;
+  font-weight: bold;
 }
 .post .post-content table {
   width: 100%;
