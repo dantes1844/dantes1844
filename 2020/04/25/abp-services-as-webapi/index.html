@@ -11,7 +11,7 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="ABP,ef core 3.0,.net core 3.0,">
+    <meta name="keywords" content="ABP,.net core 3.0,ef core 3.0,">
   
 
   
@@ -110,7 +110,7 @@
 <li>GetEntityByIdAsync</li>
 </ol>
 <p>以上方法会在默认的<code>api</code>中出现，在实现的时候，会将<code>Async</code>从方法名中去掉，最终<code>api</code>的方法类似于<code>GetAll</code>等。</p>
-<h3 id="二-全局配置service转为api"><a href="#二-全局配置service转为api" class="headerlink" title="二. 全局配置service转为api"></a>二. 全局配置service转为api</h3><p><a href="https://aspnetboilerplate.com/Pages/Documents/AspNet-Core" target="_blank" rel="noopener">官方文档</a> </p>
+<h3 id="二、全局配置service转为api"><a href="#二、全局配置service转为api" class="headerlink" title="二、全局配置service转为api"></a>二、全局配置service转为api</h3><p><a href="https://aspnetboilerplate.com/Pages/Documents/AspNet-Core" target="_blank" rel="noopener">官方文档</a> </p>
 <p>在<code>Laobai.Web.Core</code>项目里的<code>LaobaiWebCoreModule</code>中，有如下配置代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public override void PreInitialize()</span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line"></span><br><span class="line">            //配置动态web api </span><br><span class="line">            Configuration.Modules.AbpAspNetCore()</span><br><span class="line">                 .CreateControllersForAppServices(</span><br><span class="line">                     typeof(LaobaiApplicationModule).GetAssembly(), &quot;laobai&quot;</span><br><span class="line">                 );</span><br><span class="line">                 </span><br><span class="line">			...</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 
@@ -135,7 +135,7 @@
 </li>
 </ol>
 <p>   生成的<code>api</code>默认路径是 <strong>/api/services/&lt;第二个参数，默认是app&gt;/&lt;业务类名称&gt;/&lt;方法名称&gt;</strong></p>
-<h3 id="三-RemoteServiceAttribute-禁用服务类转成api接口"><a href="#三-RemoteServiceAttribute-禁用服务类转成api接口" class="headerlink" title="三.RemoteServiceAttribute 禁用服务类转成api接口"></a>三.RemoteServiceAttribute 禁用服务类转成api接口</h3><p><code>RemoteServiceAttribute</code>特性的适用范围：类，方法，接口。</p>
+<h3 id="三、RemoteServiceAttribute-禁用服务类转成api接口"><a href="#三、RemoteServiceAttribute-禁用服务类转成api接口" class="headerlink" title="三、RemoteServiceAttribute 禁用服务类转成api接口"></a>三、RemoteServiceAttribute 禁用服务类转成api接口</h3><p><code>RemoteServiceAttribute</code>特性的适用范围：类，方法，接口。</p>
 <p>需要将该特性类的构造参数设置为<code>false</code>才是禁用，默认是<code>true</code>，也就是不禁用。</p>
 <ul>
 <li><p>指定的方法上打上该标签，那么该方法将被忽略生成<code>api</code>资源。</p>
@@ -170,7 +170,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Laobai-Application-业务层的配置"><span class="toc-text">一、Laobai.Application 业务层的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-全局配置service转为api"><span class="toc-text">二. 全局配置service转为api</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-RemoteServiceAttribute-禁用服务类转成api接口"><span class="toc-text">三.RemoteServiceAttribute 禁用服务类转成api接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、-使用HttpMethodAttribute设置资源动作"><span class="toc-text">四、 使用HttpMethodAttribute设置资源动作</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Laobai-Application-业务层的配置"><span class="toc-text">一、Laobai.Application 业务层的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、全局配置service转为api"><span class="toc-text">二、全局配置service转为api</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、RemoteServiceAttribute-禁用服务类转成api接口"><span class="toc-text">三、RemoteServiceAttribute 禁用服务类转成api接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、-使用HttpMethodAttribute设置资源动作"><span class="toc-text">四、 使用HttpMethodAttribute设置资源动作</span></a></li></ol>
   </div>
 
 
