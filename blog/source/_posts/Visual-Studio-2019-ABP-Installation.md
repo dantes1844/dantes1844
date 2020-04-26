@@ -1,5 +1,5 @@
 ---
-title: Visual_Studio_2019_ABP_Installation
+title: Visual Studio 2019 安装ABP项目
 date: 2019-11-12 08:41:30
 tags: [ABP,ef core 3.0,.net core 3.0]
 categories: 
