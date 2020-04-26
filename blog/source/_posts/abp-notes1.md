@@ -28,17 +28,17 @@ categories:
 将原来的使用`SQLServer`的配置改成使用`MySQL`配置。
 
    ```c#
-   public static void Configure(DbContextOptionsBuilder<LaobaiDbContext> builder, string connectionString)
-           {
-               builder.UseMySql(connectionString);
-               //builder.UseSqlServer(connectionString);
-           }
+public static void Configure(DbContextOptionsBuilder<LaobaiDbContext> builder, string connectionString)
+{
+    builder.UseMySql(connectionString);
+    //builder.UseSqlServer(connectionString);
+}
    
-           public static void Configure(DbContextOptionsBuilder<LaobaiDbContext> builder, DbConnection connection)
-           {
-               builder.UseMySql(connection);
-               //builder.UseSqlServer(connection);
-           }
+public static void Configure(DbContextOptionsBuilder<LaobaiDbContext> builder, DbConnection connection)
+{
+    builder.UseMySql(connection);
+    //builder.UseSqlServer(connection);
+}
    ```
 
 ##### 2.3 升级数据库

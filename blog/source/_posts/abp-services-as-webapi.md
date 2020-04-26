@@ -30,17 +30,15 @@ categories:
 
 ```
 public override void PreInitialize()
-        {
-            ...
-
-            //配置动态web api 
-            Configuration.Modules.AbpAspNetCore()
-                 .CreateControllersForAppServices(
-                     typeof(LaobaiApplicationModule).GetAssembly(), "laobai"
-                 );
-                 
-			...
-        }
+{
+	...
+    //配置动态web api 
+    Configuration.Modules.AbpAspNetCore()
+                .CreateControllersForAppServices(
+                    typeof(LaobaiApplicationModule).GetAssembly(), "laobai"
+                );
+    ...
+}
 ```
 
 `CreateControllersForAppServices` 方法有三个参数：
@@ -55,7 +53,7 @@ public override void PreInitialize()
 
    ``````c#
    var verb = configuration?.UseConventionalHttpVerbs == true
-                              ? ProxyScriptingHelper.GetConventionalVerbForMethodName(action.ActionName)
+   							?ProxyScriptingHelper.GetConventionalVerbForMethodName(action.ActionName)
                               : ProxyScriptingHelper.DefaultHttpVerb;
    ``````
 
