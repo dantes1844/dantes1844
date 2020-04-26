@@ -76,4 +76,5 @@ set global innodb_file_format_max=BARRACUDA;
 
 参考文档:
 
-[1.Mysql Specified key was too long; max key length is 767 bytes](https://www.cnblogs.com/wang-yaz/p/10942869.html)](https://www.cnblogs.com/wang-yaz/p/10942869.html)
+1. [Mysql Specified key was too long; max key length is 767 bytes](https://www.cnblogs.com/wang-yaz/p/10942869.html)
+

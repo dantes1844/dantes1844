@@ -16,3 +16,5 @@ categories:
 7. 接口授权问题
 8. swagger index.html中每个模块的含义。尤其是底部的Schemas
 9. 数据的绑定及automapper
+10. 国际化问题
+11. .net core的中间件实现及执行顺序

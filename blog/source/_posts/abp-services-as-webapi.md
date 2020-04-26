@@ -22,7 +22,7 @@ categories:
 
 以上方法会在默认的`api`中出现，在实现的时候，会将`Async`从方法名中去掉，最终`api`的方法类似于`GetAll`等。
 
-### 二. 全局配置service转为api
+### 二、全局配置service转为api
 
 [官方文档](https://aspnetboilerplate.com/Pages/Documents/AspNet-Core) 
 
@@ -104,7 +104,7 @@ public override void PreInitialize()
 
 
 
-### 三.RemoteServiceAttribute 禁用服务类转成api接口
+### 三、RemoteServiceAttribute 禁用服务类转成api接口
 
 `RemoteServiceAttribute`特性的适用范围：类，方法，接口。
 
