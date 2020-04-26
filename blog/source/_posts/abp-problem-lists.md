@@ -18,3 +18,4 @@ categories:
 9. 数据的绑定及automapper
 10. 国际化问题
 11. .net core的中间件实现及执行顺序
+12. abp各个项目的含义，例如Abp.Zero,Abp.Web.Common
