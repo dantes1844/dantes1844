@@ -12,7 +12,7 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="ABP,ef core 3.0,.net core 3.0,">
+    <meta name="keywords" content="ABP,.net core 3.0,ef core 3.0,">
   
 
   
@@ -96,11 +96,12 @@
       <span id="busuanzi_value_page_pv"></span> 点击
     </span>
       <span class="slash">/</span>
-      <span class="read">阅读耗时 5 分钟</span>
+      <span class="read">阅读耗时 8 分钟</span>
     </header>
 
     <div class="post-content">
-      <h5 id="1-模块的加载过程"><a href="#1-模块的加载过程" class="headerlink" title="1. 模块的加载过程"></a>1. 模块的加载过程</h5><h6 id="1-StartUp类"><a href="#1-StartUp类" class="headerlink" title="1)  StartUp类"></a>1)  StartUp类</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)</span><br><span class="line">&#123;</span><br><span class="line">    app.UseAbp(); //Initializes ABP framework. Should be called first.</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      <p><a href="https://aspnetboilerplate.com/Pages/Documents/Localization" target="_blank" rel="noopener">官方文档</a></p>
+<h5 id="1-模块的加载过程"><a href="#1-模块的加载过程" class="headerlink" title="1. 模块的加载过程"></a>1. 模块的加载过程</h5><h6 id="1-StartUp类"><a href="#1-StartUp类" class="headerlink" title="1)  StartUp类"></a>1)  StartUp类</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)</span><br><span class="line">&#123;</span><br><span class="line">    app.UseAbp(); //Initializes ABP framework. Should be called first.</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h6 id="2-Abp-AspNetCore-AbpApplicationBuilderExtensions类"><a href="#2-Abp-AspNetCore-AbpApplicationBuilderExtensions类" class="headerlink" title="2) Abp.AspNetCore.AbpApplicationBuilderExtensions类"></a>2) Abp.AspNetCore.AbpApplicationBuilderExtensions类</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static void UseAbp([NotNull] this IApplicationBuilder app, Action&lt;AbpApplicationBuilderOptions&gt; optionsAction)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    InitializeAbp(app);//执行各个模块的前置、后置动作的初始化</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static void InitializeAbp(IApplicationBuilder app)</span><br><span class="line">&#123;</span><br><span class="line">    var abpBootstrapper = app.ApplicationServices.GetRequiredService&lt;AbpBootstrapper&gt;();</span><br><span class="line">    abpBootstrapper.Initialize();//执行启动器的初始化方法</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -112,22 +113,39 @@
 
 <h6 id="6-Abp-Localization-LocalizationManager类"><a href="#6-Abp-Localization-LocalizationManager类" class="headerlink" title="6) Abp.Localization.LocalizationManager类"></a>6) Abp.Localization.LocalizationManager类</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">private void InitializeSources()</span><br><span class="line">&#123;</span><br><span class="line">        ...</span><br><span class="line">        //这里的_configuration.Sources是每个模块（AbpModule的子类）中 PreInitialize（）方法中设定的</span><br><span class="line">        foreach (var source in _configuration.Sources)</span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line"></span><br><span class="line">                _sources[source.Name] = source;</span><br><span class="line">            //这里就是按照程序集的名称，读取不同配置文件中的键值对，放入本地化资源中。</span><br><span class="line">            //不同的配置在下面几个章节中分别解读。</span><br><span class="line">            source.Initialize(_configuration, _iocResolver);</span><br><span class="line"></span><br><span class="line">            //Extending dictionaries</span><br><span class="line">            if (source is IDictionaryBasedLocalizationSource)</span><br><span class="line">            &#123;</span><br><span class="line">                var dictionaryBasedSource = source as IDictionaryBasedLocalizationSource;</span><br><span class="line">                var extensions = _configuration.Sources.Extensions.Where(e =&gt; e.SourceName == source.Name).ToList();</span><br><span class="line">                foreach (var extension in extensions)</span><br><span class="line">                &#123;</span><br><span class="line">                    extension.DictionaryProvider.Initialize(source.Name);</span><br><span class="line">                    foreach (var extensionDictionary in extension.DictionaryProvider.Dictionaries.Values)</span><br><span class="line">                    &#123;</span><br><span class="line">                        dictionaryBasedSource.Extend(extensionDictionary);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="2-配置文件的解析方式"><a href="#2-配置文件的解析方式" class="headerlink" title="2. 配置文件的解析方式"></a>2. 配置文件的解析方式</h5><p>目前总共是四种解析方式：</p>
+<h5 id="2-本地化资源的种类"><a href="#2-本地化资源的种类" class="headerlink" title="2. 本地化资源的种类"></a>2. 本地化资源的种类</h5><ul>
+<li>NullLocalizationSource：空的资源解析方式，一种设计方式，避免出现空指针</li>
+<li>ResourceFileLocalizationSource：使用资源文件作为本地化资源文件。</li>
+<li>DictionaryBasedLocalizationSource：使用字典形式的资源文件，也就是将资源文件读成键值对形式的字典，供前后端使用。默认的<code>abp</code>示例代码就使用的这种方式。</li>
+<li>MultiTenantLocalizationSource：继承自<code>DictionaryBasedLocalizationSource</code>，应该是说多租户模式下，也是使用字典模式的资源文件。</li>
+</ul>
+<p>也可以自定义资源的存储方式，然后实现<code>ILocalizationSource</code>接口来解析对应的资源文件。</p>
+<p><em>个人觉得：<code>xml</code>模式足够好了，维护很方便，没有必要使用<code>ResourceFileLocalizationSource</code>或者自定义模式。</em></p>
+<h5 id="3-配置文件的解析方式"><a href="#3-配置文件的解析方式" class="headerlink" title="3. 配置文件的解析方式"></a>3. 配置文件的解析方式</h5><p>目前总共是四种解析方式：</p>
 <ul>
 <li>JsonFileLocalizationDictionaryProvider：从<code>json</code>文件中读取字典</li>
 <li>JsonEmbeddedFileLocalizationDictionaryProvider：从嵌入的<code>json</code>文件中读取字典，这个时候要将文件属性设置成”嵌入的资源”</li>
 <li>XmlFileLocalizationDictionaryProvider：从<code>xml</code>文件中读取字典</li>
 <li>XmlEmbeddedFileLocalizationDictionaryProvider：从嵌入的<code>xml</code>文件中读取字典，这个时候要将文件属性设置成”嵌入的资源”</li>
 </ul>
-<h5 id="3-如何在系统中配置资源"><a href="#3-如何在系统中配置资源" class="headerlink" title="3. 如何在系统中配置资源"></a>3. 如何在系统中配置资源</h5><p>在添加配置项的时候，应当设置相关解析的属性。以<code>Abp.AbpKernelModule</code>类为例，它配置了嵌入的<code>xml</code>资源文件及解析方式：</p>
+<h5 id="4-如何在系统中配置要使用的资源"><a href="#4-如何在系统中配置要使用的资源" class="headerlink" title="4. 如何在系统中配置要使用的资源"></a>4. 如何在系统中配置要使用的资源</h5><p>在添加配置项的时候，应当设置相关解析的属性。以<code>Abp.AbpKernelModule</code>类为例，它配置了嵌入的<code>xml</code>资源文件及解析方式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"> private void AddLocalizationSources()</span><br><span class="line"> &#123;</span><br><span class="line"> 	//要读取本地化资源的程序集</span><br><span class="line">    var assembly = typeof(AbpKernelModule).GetAssembly();</span><br><span class="line">    //资源文件除文件名外的完整命名空间</span><br><span class="line">    var rootNameSpaces = &quot;Abp.Localization.Sources.AbpXmlSource&quot;;</span><br><span class="line">    //资源解析器</span><br><span class="line">    var provider = new XmlEmbeddedFileLocalizationDictionaryProvider(assembly, rootNameSpaces);</span><br><span class="line">    //资源</span><br><span class="line">    var source = new DictionaryBasedLocalizationSource(AbpConsts.LocalizationSourceName, provider);</span><br><span class="line">    Configuration.Localization.Sources.Add(source);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="4-其他"><a href="#4-其他" class="headerlink" title="4. 其他"></a>4. 其他</h5><p>从以上过程也能看出来，abp在模块的核心内容是四个执行过程，分别是</p>
+<p>使用资源文件时要注意，文件名以<code>-</code>分割，而不要使用<code>.</code>，因为<code>.</code>会造成错误的命名空间导致找不到资源文件。例如：使用<code>bussiness-cn.xml</code>或者<code>bussiness-cn.json</code>，而非<del><code>bussiness.cn.xml</code></del>等。</p>
+<p>另外，还可以根据模块(<code>module</code>)设置不同的资源，例如：在业务类可以设置一个资源文件，在<code>web</code>层设置另外的资源，这样可以将资源分开管理。最终都是在同一个地方加载到配置里的。</p>
+<p><code>xml</code>或者<code>json</code>文件都必须是<code>Unicode</code>格式，因为最终<code>abp</code>是使用<code>Unicode</code>编码读取的文件流，然后解析内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static string ReadStringFromStream(Stream stream)</span><br><span class="line">&#123;</span><br><span class="line">    var bytes = stream.GetAllBytes();</span><br><span class="line">    var skipCount = HasBom(bytes) ? 3 : 0;</span><br><span class="line">    return Encoding.UTF8.GetString(bytes, skipCount, bytes.Length - skipCount);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-其他"><a href="#5-其他" class="headerlink" title="5. 其他"></a>5. 其他</h5><h6 id="5-1-abp的模块-module-核心："><a href="#5-1-abp的模块-module-核心：" class="headerlink" title="5.1 abp的模块(module)核心："></a>5.1 abp的模块(module)核心：</h6><p>从以上过程也能看出来，<code>abp</code>在模块的核心内容是四个执行过程，分别是</p>
 <ul>
-<li>PreInitialize：执行一些在系统初始化前需要配置的内容，例如本地化资源解析方式。</li>
-<li>Initialize：执行一些系统初始化中执行的内容，例如：为每个程序集设置注入内容。</li>
-<li>PostInitialize：执行一些系统初始化完成后执行的内容，例如加载本地化资源的内容。</li>
-<li>Shutdown：在系统崩溃时执行的一些内容，例如在系统崩溃时，有些资源需要手动释放。</li>
+<li><p>PreInitialize：执行一些在系统初始化前需要配置的内容，例如本地化资源解析方式。</p>
+</li>
+<li><p>Initialize：执行一些系统初始化中执行的内容，例如：为每个程序集设置注入内容。</p>
+</li>
+<li><p>PostInitialize：执行一些系统初始化完成后执行的内容，例如加载本地化资源的内容。</p>
+</li>
+<li><p>Shutdown：在系统崩溃时执行的一些内容，例如在系统崩溃时，有些资源需要手动释放。</p>
+</li>
 </ul>
 
     </div>
@@ -136,7 +154,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-模块的加载过程"><span class="toc-text">1. 模块的加载过程</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-StartUp类"><span class="toc-text">1)  StartUp类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-Abp-AspNetCore-AbpApplicationBuilderExtensions类"><span class="toc-text">2) Abp.AspNetCore.AbpApplicationBuilderExtensions类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-Abp-AbpBootstrapper类"><span class="toc-text">3)  Abp.AbpBootstrapper类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-Abp-Modules-AbpModuleManager类"><span class="toc-text">4) Abp.Modules.AbpModuleManager类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-Abp-AbpKernelModule类"><span class="toc-text">5) Abp.AbpKernelModule类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-Abp-Localization-LocalizationManager类"><span class="toc-text">6) Abp.Localization.LocalizationManager类</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-配置文件的解析方式"><span class="toc-text">2. 配置文件的解析方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-如何在系统中配置资源"><span class="toc-text">3. 如何在系统中配置资源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-其他"><span class="toc-text">4. 其他</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-模块的加载过程"><span class="toc-text">1. 模块的加载过程</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-StartUp类"><span class="toc-text">1)  StartUp类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-Abp-AspNetCore-AbpApplicationBuilderExtensions类"><span class="toc-text">2) Abp.AspNetCore.AbpApplicationBuilderExtensions类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-Abp-AbpBootstrapper类"><span class="toc-text">3)  Abp.AbpBootstrapper类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-Abp-Modules-AbpModuleManager类"><span class="toc-text">4) Abp.Modules.AbpModuleManager类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-Abp-AbpKernelModule类"><span class="toc-text">5) Abp.AbpKernelModule类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-Abp-Localization-LocalizationManager类"><span class="toc-text">6) Abp.Localization.LocalizationManager类</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-本地化资源的种类"><span class="toc-text">2. 本地化资源的种类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-配置文件的解析方式"><span class="toc-text">3. 配置文件的解析方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-如何在系统中配置要使用的资源"><span class="toc-text">4. 如何在系统中配置要使用的资源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-其他"><span class="toc-text">5. 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#5-1-abp的模块-module-核心："><span class="toc-text">5.1 abp的模块(module)核心：</span></a></li></ol></li></ol>
   </div>
 
 
@@ -152,14 +170,19 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2020/04/26/abp-location-project-details/" rel="next" title="【ABP框架笔记】3.2 本地化模块之各个模块中的本地化资源内容解析">
-          【ABP框架笔记】3.2 本地化模块之各个模块中的本地化资源内容解析
+          <a href="/2020/04/25/abp-services-as-webapi/" rel="next" title="【ABP框架笔记】2.ApplicationServices 生成web api">
+          【ABP框架笔记】2.ApplicationServices 生成web api
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
+          <a href="/2020/04/27/abp-location-project-details/" rel="prev" title="【ABP框架笔记】3.2 本地化模块之各个模块中的本地化资源内容解析">
+            【ABP框架笔记】3.2 本地化模块之各个模块中的本地化资源内容解析
+          </a>
+          <span>〉</span>
+        
       </div>
     </div>
   
