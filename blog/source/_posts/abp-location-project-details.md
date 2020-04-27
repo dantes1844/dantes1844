@@ -1,6 +1,6 @@
 ---
 title: 【ABP框架笔记】3.2 本地化模块之各个模块中的本地化资源内容解析
-date: 2020-04-26 23:22:49
+date: 2020-04-27 23:22:49
 tags: [ABP,.net core 3.0,ef core 3.0]
 categories: 
 	- [框架]

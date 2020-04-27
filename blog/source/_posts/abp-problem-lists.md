@@ -16,6 +16,8 @@ categories:
 7. 接口授权问题
 8. swagger index.html中每个模块的含义。尤其是底部的Schemas
 9. 数据的绑定及automapper
-10. 国际化问题
+10. [国际化问题](/2020/04/26/abp-localization/)
 11. .net core的中间件实现及执行顺序
 12. abp各个项目的含义，例如Abp.Zero,Abp.Web.Common
+13. 首次加载的GetAll返回的所有数据信息(一个abp的JavaScript对象)
+14. 高频使用的Attribute。
