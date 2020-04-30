@@ -20,4 +20,4 @@ categories:
 11. .net core的中间件实现及执行顺序
 12. abp各个项目的含义，例如Abp.Zero,Abp.Web.Common
 13. 首次加载的GetAll返回的所有数据信息(一个abp的JavaScript对象)
-14. 高频使用的Attribute。
+14. 高频使用的Attribute。例如NotNull等
