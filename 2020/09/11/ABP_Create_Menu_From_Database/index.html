@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content>
+  
+
+  
+    <meta name="description" content="ABP 从数据库中创建菜单">
+  
+  
+  
+	<link rel="icon" type="image/x-icon" href="/logo.jpeg">
+  
+  
+  <title>ABP 从数据库中创建菜单 - 老白</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/images//logo.jpeg">
+    <span class="title">老白</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/categories" class="pure-menu-link">分类</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        ABP 从数据库中创建菜单
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-09-11T05:57:26.000Z">
+        2020-09-11
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 6 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p><a href="https://support.abp.io/QA/Questions/224/AngularHow-to-build-all-menus-from-the-database" target="_blank" rel="noopener">ABP 支持组给出的建议</a></p>
+<blockquote>
+<p>The current design of the menu does not consider persistence to the database, you need to do some work for this.</p>
+<ol>
+<li>You need to create an entity that is compatible with <code>ApplicationMenu</code>.</li>
+<li>Create a service that persists all menus to the database when the application is initialized(If the menu is not in the database table)</li>
+<li>Custom <code>DatabaseMenuManager</code> to replace <code>MenuManager</code> and get the menu from the database(should be filtered based on the current user).</li>
+</ol>
+</blockquote>
+<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><h4 id="1-创建菜单服务类"><a href="#1-创建菜单服务类" class="headerlink" title="1. 创建菜单服务类"></a>1. 创建菜单服务类</h4><p><img src="services.png" alt="接口、类及dto文件"></p>
+<p>在<code>Application</code>项目里增加如下结构。主要的类文件<code>MenuService</code>是一个普通的业务类，继承自<code>WindElectricityAppServiceBase</code>以及自定义的接口<code>IMenuService</code>。接口继承自<code>IAsyncCrudAppService&lt;MenuDto&gt;</code>，这样就包含了默认要实现的几个<code>CRUD</code>方法。其中获取菜单的方法核心代码如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public async Task&lt;ListResultDto&lt;MenuDto&gt;&gt; GetMenuForProviderAsync()</span><br><span class="line">        &#123;</span><br><span class="line">            var menus = await _menuRepository.GetAllListAsync(c =&gt; !c.IsDeleted);</span><br><span class="line">            </span><br><span class="line">            //return await Task.FromResult(new ListResultDto&lt;MenuDto&gt;(ObjectMapper.Map&lt;List&lt;MenuDto&gt;&gt;(menus)));</span><br><span class="line">            var result = new List&lt;MenuDto&gt;();</span><br><span class="line">            foreach (var menu in menus)</span><br><span class="line">            &#123;</span><br><span class="line">                result.Add(new MenuDto()</span><br><span class="line">                &#123;</span><br><span class="line">                    Icon = menu.Icon,</span><br><span class="line">                    Url = menu.Url,</span><br><span class="line">                    DisplayName = menu.DisplayName,</span><br><span class="line">                    Name = menu.Name,</span><br><span class="line">                    Id = menu.Id,</span><br><span class="line">                    ParentMenu = menu.ParentMenu,</span><br><span class="line">                    ParentMenuId = menu.ParentMenuId,</span><br><span class="line">                    RequiresAuthentication = menu.RequiresAuthentication,</span><br><span class="line">                    SubMenus = menu.SubMenus</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            return new ListResultDto&lt;MenuDto&gt;(result);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项，在这个时候，是不能调用<code>ObjectMapper</code>的，原因是：<code>AutoMapper</code>是在<code>AbpAutoMapperModule</code>的<code>PreInitialize</code>中替换成有效实现类（<code>AutoMapperObjectMapper</code>），而<code>AutoMapperObjectMapper</code>又依赖于<code>IMapper</code>的注入，该接口的注入是在<code>AbpAutoMapperModule</code>的<code>PostInitialize</code>方法中，  因<code>AbpAutoMapperModule</code>依赖于<code>AbpKernalModule</code>，该方法在核心模块的<code>PostInitialize</code>之后执行，所以在核心模块的<code>PostInitialize</code>中，  获取菜单时，要使用<code>ObjectMapper</code>会报错。</strong></p>
+<h5 id="1-1-Castle-Windsor的属性注入"><a href="#1-1-Castle-Windsor的属性注入" class="headerlink" title="1.1 Castle.Windsor的属性注入"></a>1.1 Castle.Windsor的属性注入</h5><p><a href="https://github.com/castleproject/Windsor/blob/master/docs/how-properties-are-injected.md" target="_blank" rel="noopener">参考官方文档</a></p>
+<p>核心内容：</p>
+<ul>
+<li>Has ‘public’ accessible setter：必须是public的</li>
+<li>Is an instance property：属性而非字段</li>
+<li>If <code>ComponentModel.InspectionBehavior</code> is set to <code>PropertiesInspectionBehavior.DeclaredOnly</code>, is not inherited：</li>
+<li>Does not have parameters：没有参数</li>
+<li>Is not annotated with the <code>Castle.Core.DoNotWireAttribute</code> attribute：没有打标签<code>Castle.Core.DoNotWireAttribute</code></li>
+</ul>
+<h5 id="1-2-abp自定义的PropertiesDependenciesModelInspector"><a href="#1-2-abp自定义的PropertiesDependenciesModelInspector" class="headerlink" title="1.2 abp自定义的PropertiesDependenciesModelInspector"></a>1.2 abp自定义的PropertiesDependenciesModelInspector</h5><p><code>abp</code>自定义了一个<code>AbpPropertiesDependenciesModelInspector</code>继承自<code>PropertiesDependenciesModelInspector</code>，该类仅仅是增加一个判断，以<code>Microsoft</code>开头的属性不进行注入。在<code>abp</code>的代码库中，<code>AbpAspNetCoreDemo</code>的<code>Startup</code>中的<code>ConfigureServices</code>方法中，也演示了如何调用自定义的<code>PropertiesDependenciesModelInspector</code>。当然我们也可以扩展自己的类，按照自己的需要决定属性如何注入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var propInjector = options.IocManager.IocContainer.Kernel.ComponentModelBuilder</span><br><span class="line">                    .Contributors</span><br><span class="line">                    .OfType&lt;PropertiesDependenciesModelInspector&gt;()</span><br><span class="line">                    .Single();</span><br><span class="line"></span><br><span class="line">                options.IocManager.IocContainer.Kernel.ComponentModelBuilder.RemoveContributor(propInjector);</span><br><span class="line">                options.IocManager.IocContainer.Kernel.ComponentModelBuilder.AddContributor(new AbpPropertiesDependenciesModelInspector(new DefaultConversionManager()));</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-增加自定义菜单Provider"><a href="#2-增加自定义菜单Provider" class="headerlink" title="2. 增加自定义菜单Provider"></a>2. 增加自定义菜单Provider</h4><p>在<code>web</code>项目的<code>StartUp</code>文件夹中增加一个自定义的<code>NavigationProvider</code>实现类。核心代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public class CustomDbNavigationProvider : NavigationProvider</span><br><span class="line">    &#123;</span><br><span class="line">        public override async void SetNavigation(INavigationProviderContext context)</span><br><span class="line">        &#123;</span><br><span class="line">            var menuService = IocManager.Instance.Resolve&lt;IMenuService&gt;();</span><br><span class="line">            var menus = await menuService.GetMenuForProviderAsync();</span><br><span class="line">            foreach (var menu in menus.Items)</span><br><span class="line">            &#123;</span><br><span class="line">                if (menu.ParentMenuId.HasValue)</span><br><span class="line">                &#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">                var menuOfProvider = new MenuItemDefinition(</span><br><span class="line">                    menu.Name,</span><br><span class="line">                    L(menu.DisplayName),</span><br><span class="line">                    url: menu.Url,</span><br><span class="line">                    icon: menu.Url,</span><br><span class="line">                    requiresAuthentication: menu.RequiresAuthentication</span><br><span class="line">                );</span><br><span class="line">                if (!menu.SubMenus.IsNullOrEmpty())</span><br><span class="line">                &#123;</span><br><span class="line">                    foreach (var menuSubMenu in menu.SubMenus)</span><br><span class="line">                    &#123;</span><br><span class="line">                        var submenuOfProvider = new MenuItemDefinition(</span><br><span class="line">                            menuSubMenu.Name,</span><br><span class="line">                            L(menuSubMenu.DisplayName),</span><br><span class="line">                            url: menuSubMenu.Url,</span><br><span class="line">                            icon: menuSubMenu.Url,</span><br><span class="line">                            requiresAuthentication: menuSubMenu.RequiresAuthentication</span><br><span class="line">                        );</span><br><span class="line">                        menuOfProvider.AddItem(submenuOfProvider);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                context.Manager.MainMenu.AddItem(menuOfProvider);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-修改默认的菜单Provider"><a href="#3-修改默认的菜单Provider" class="headerlink" title="3. 修改默认的菜单Provider"></a>3. 修改默认的菜单Provider</h4><p>修改<code>Startup</code>文件夹中模块类的<code>PreInitialize</code>方法。将调用默认的<code>Provider</code>改成自定义的<code>Provider</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public override void PreInitialize()</span><br><span class="line">&#123;</span><br><span class="line">    Configuration.Navigation.Providers.Add&lt;CustomDbNavigationProvider&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-增加种子数据"><a href="#4-增加种子数据" class="headerlink" title="4. 增加种子数据"></a>4. 增加种子数据</h4><p>如果有需要，在项目的<code>EntityFrameworkCore</code>层中增加相应的种子数据类及方法，并在<code>SeedHelper</code>中进行调用。这个就是根据表自动进行拼凑实体，调用相关的保存方法即可。代码略。</p>
+<p><img src="seed.png" alt="文件示例"></p>
+
+    </div>
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#实践"><span class="toc-text">实践</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建菜单服务类"><span class="toc-text">1. 创建菜单服务类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-Castle-Windsor的属性注入"><span class="toc-text">1.1 Castle.Windsor的属性注入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-abp自定义的PropertiesDependenciesModelInspector"><span class="toc-text">1.2 abp自定义的PropertiesDependenciesModelInspector</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-增加自定义菜单Provider"><span class="toc-text">2. 增加自定义菜单Provider</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-修改默认的菜单Provider"><span class="toc-text">3. 修改默认的菜单Provider</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-增加种子数据"><span class="toc-text">4. 增加种子数据</span></a></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/09/09/Visual_Studio_Installer_Porject_Add_Prerequisite/" rel="next" title="Visual Studio Installer Porject 增加指定的Framework包">
+          Visual Studio Installer Porject 增加指定的Framework包
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/09/28/ABP_service_use_primitive_type_parameters/" rel="prev" title="ABP 服务类使用基本数据类型的参数问题">
+            ABP 服务类使用基本数据类型的参数问题
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="/">首页</a> |
+        <a class="bottom-item" href="https://github.com/dantes1844/" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

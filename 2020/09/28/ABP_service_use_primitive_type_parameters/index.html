@@ -12,18 +12,18 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content>
+    <meta name="keywords" content="ABP,Web API,">
   
 
   
-    <meta name="description" content="老白,null">
+    <meta name="description" content="ABP 服务类使用基本数据类型的参数问题">
   
   
   
 	<link rel="icon" type="image/x-icon" href="/logo.jpeg">
   
   
-  <title>tag: .net core 3.0 - 老白</title>
+  <title>ABP 服务类使用基本数据类型的参数问题 - 老白</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -72,99 +72,86 @@
 
   <div class="container" id="content-outer">
     <div class="inner" id="content-inner">
-      
-<div class="page tag-page" id="tag">
-  <h3 title=".net core 3.0下的文章">.net core 3.0</h3>
-  
-    <div class="tag-item">
-      
-        <a href="/2020/04/30/abp-controller-to-api/">
-          【ABP框架笔记】 5.控制器自动生成api接口的事项
-        </a>
-      
-      <time class="time" datetime="2020-04-30T08:40:58.000Z">
-        2020-04-30
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        ABP 服务类使用基本数据类型的参数问题
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-09-28T04:36:10.000Z">
+        2020-09-28
       </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ABP/">ABP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web-API/">Web API</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 2 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>今天在写一个业务类时，往里传入了一个整型的参数，然而<code>Service</code>获得的参数始终是0。</p>
+<p>查看了相关文档之后，发现，<code>web api</code>本身其实是支持基本数据类型的，而<code>abp</code>内部则没有对简单类型进行处理。所以无法获取参数，必须将其封装成一个<code>dto</code>类以获取值。</p>
+<p>这样的操作似乎有点浪费，为了一个简单的参数封装一个<code>dto</code>.</p>
+<p>web api 参数绑定方式：</p>
+<blockquote>
+<h3 id="When-do-we-use-which"><a href="#When-do-we-use-which" class="headerlink" title="When do we use which?"></a>When do we use which?</h3><p>Here are the basic rules to determine whether a parameter is read with model binding or a formatter:</p>
+<ol>
+<li>If the parameter has no attribute on it, then the decision is made purely on the parameter’s .NET type. <strong>“Simple types” uses model binding.</strong> Complex types uses the formatters. A “simple type” includes: <a href="https://msdn.microsoft.com/en-us/library/system.type.isprimitive.aspx" target="_blank" rel="noopener">primitives</a>, TimeSpan, DateTime, Guid, Decimal, String, or something with a TypeConverter that converts from strings.</li>
+<li>You can use a [FromBody] attribute to specify that a parameter should be from the body.</li>
+<li>You can use a [ModelBinder] attribute on the parameter or the parameter’s type to specify that a parameter should be model bound. This attribute also lets you configure the model binder. [FromUri] is a derived instance of [ModelBinder] that specifically configures a model binder to only look in the URI.</li>
+<li>The body can only be read once. So if you have 2 complex types in the signature, at least one of them must have a [ModelBinder] attribute on it.</li>
+</ol>
+</blockquote>
+<p>相关连接:</p>
+<p><a href="https://github.com/aspnetboilerplate/aspnetboilerplate/issues/551" target="_blank" rel="noopener">abp 不支持基本类型数据参数的解释</a></p>
+<p><a href="https://docs.microsoft.com/en-us/archive/blogs/jmstall/how-webapi-does-parameter-binding" target="_blank" rel="noopener">web api 支持的参数类型</a></p>
+
     </div>
-  
-    <div class="tag-item">
-      
-        <a href="/2020/04/30/abp-attribute-list/">
-          【ABP框架笔记】 4.高频使用的Attributes
-        </a>
-      
-      <time class="time" datetime="2020-04-30T01:10:40.000Z">
-        2020-04-30
-      </time>
-    </div>
-  
-    <div class="tag-item">
-      
-        <a href="/2020/04/27/abp-location-project-details/">
-          【ABP框架笔记】3.2 本地化模块之各个模块中的本地化资源内容解析
-        </a>
-      
-      <time class="time" datetime="2020-04-27T15:22:49.000Z">
-        2020-04-27
-      </time>
-    </div>
-  
-    <div class="tag-item">
-      
-        <a href="/2020/04/26/abp-localization/">
-          【ABP框架笔记】3.1 本地化模块之资源加载过程
-        </a>
-      
-      <time class="time" datetime="2020-04-26T15:39:31.000Z">
-        2020-04-26
-      </time>
-    </div>
-  
-    <div class="tag-item">
-      
-        <a href="/2020/04/25/abp-services-as-webapi/">
-          【ABP框架笔记】2.ApplicationServices 生成web api
-        </a>
-      
-      <time class="time" datetime="2020-04-25T06:39:05.000Z">
-        2020-04-25
-      </time>
-    </div>
-  
-    <div class="tag-item">
-      
-        <a href="/2020/04/25/abp-problem-lists/">
-          【ABP框架笔记】待学习列表
-        </a>
-      
-      <time class="time" datetime="2020-04-25T06:17:30.000Z">
-        2020-04-25
-      </time>
-    </div>
-  
-    <div class="tag-item">
-      
-        <a href="/2020/04/24/abp-notes1/">
-          【ABP框架笔记】1.下载示例代码，生成数据库表
-        </a>
-      
-      <time class="time" datetime="2020-04-24T14:30:43.000Z">
-        2020-04-24
-      </time>
-    </div>
-  
-    <div class="tag-item">
-      
-        <a href="/2019/11/12/Visual-Studio-2019-ABP-Installation/">
-          Visual Studio 2019 安装ABP项目
-        </a>
-      
-      <time class="time" datetime="2019-11-12T00:41:30.000Z">
-        2019-11-12
-      </time>
-    </div>
-  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#When-do-we-use-which"><span class="toc-text">When do we use which?</span></a></li></ol>
+  </div>
+
+
+  </div>
 </div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/09/11/ABP_Create_Menu_From_Database/" rel="next" title="ABP 从数据库中创建菜单">
+          ABP 从数据库中创建菜单
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+      </div>
+    </div>
+  
+
+
     </div>
 
     

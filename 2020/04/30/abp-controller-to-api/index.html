@@ -12,7 +12,7 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="框架,ABP,">
+    <meta name="keywords" content="ABP,.net core 3.0,ef core 3.0,">
   
 
   
@@ -88,7 +88,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ABP/">ABP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/net-core-3-0/">.net core 3.0</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ABP/">ABP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ef-core-3-0/">ef core 3.0</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -114,7 +114,7 @@
 <h5 id="2-3-相同名称的api地址"><a href="#2-3-相同名称的api地址" class="headerlink" title="2.3 相同名称的api地址"></a>2.3 相同名称的api地址</h5><p>在服务类里生成了 <code>api/services/app/Product/GetAll</code>的请求地址，然后再在控制里添加<code>Product</code>控制器和<code>GetAll</code>方法，<code>js</code>里会有两份一模一样的<code>api</code>方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// action &apos;getProducts&apos; 这里是服务类生成的</span><br><span class="line">    abp.services.app.product.getProducts = function(ajaxParams) &#123;</span><br><span class="line">      return abp.ajax($.extend(true, &#123;</span><br><span class="line">        url: abp.appPath + &apos;api/services/app/product/GetAll&apos;,</span><br><span class="line">        type: &apos;GET&apos;</span><br><span class="line">      &#125;, ajaxParams));;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    // action &apos;getAll&apos; 这里是控制器生成的</span><br><span class="line">    abp.services.app.product.getAll = function(ajaxParams) &#123;</span><br><span class="line">      return abp.ajax($.extend(true, &#123;</span><br><span class="line">        url: abp.appPath + &apos;api/services/app/Product/GetAll&apos;,</span><br><span class="line">        type: &apos;GET&apos;</span><br><span class="line">      &#125;, ajaxParams));;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
 
-<p>在发送请求时，后端会报错，提示有歧义的请求。所以在添加服务类或者控制器的时候，要避免出现相同路径出现。</p>
+<p>在发送请求时，后端会报错，提示有歧义的请求。所以在添加服务类或者控制器的时候，要避免相同路径出现。</p>
 <p><img src="AmbiguousMatchException.png" alt="相同路径的api报错"></p>
 
     </div>
@@ -147,6 +147,11 @@
   
       <div class="post-nav-item post-nav-prev">
           
+          <a href="/2020/09/09/Visual_Studio_Installer_Porject_Add_Prerequisite/" rel="prev" title="Visual Studio Installer Porject 增加指定的Framework包">
+            Visual Studio Installer Porject 增加指定的Framework包
+          </a>
+          <span>〉</span>
+        
       </div>
     </div>
   
