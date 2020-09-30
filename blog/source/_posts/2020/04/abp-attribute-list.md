@@ -2,7 +2,8 @@
 title: 【ABP框架笔记】 4.高频使用的Attributes
 permalink: abp-attribute-list
 date: 2020-04-30 09:10:40
-tags: 
+tags: [ABP,.net core 3.0,ef core 3.0]
+categories: 
     - [框架]
     - [ABP]
 ---
@@ -29,7 +30,7 @@ tags:
 
 #### 3. DependsOnAttribute
 
-设置当前模块的依赖 模块。这些模块在`ModuleManager`里会依次加载。然后根据依赖的顺序，依次执行每个模块的`PreInitialize`,`Initialize`,`PostInitialize`事件，完成模块的初始化工作。
+设置当前模块的依赖模块。这些模块在`ModuleManager`里会依次加载。然后根据依赖的顺序，依次执行每个模块的`PreInitialize`,`Initialize`,`PostInitialize`事件，完成模块的初始化工作。
 
 ```c#
 [DependsOn(
@@ -44,3 +45,73 @@ tags:
 #### 4. RemoteServiceAttribute
 
 这个也正好是 [【ABP框架笔记】2.ApplicationServices 生成web api](/2020/04/25/abp-services-as-webapi)的一个补充。
+
+[具体的使用](/2020/04/30/abp-controller-to-api/)也写了一个单独的例子
+
+启动过程：
+
+```c#
+//1. Abp.Modules.AbpModuleManager 
+public virtual void StartModules()
+{
+    var sortedModules = _modules.GetSortedModuleListByDependency();
+    sortedModules.ForEach(module => module.Instance.PreInitialize());
+    sortedModules.ForEach(module => module.Instance.Initialize());
+    sortedModules.ForEach(module => module.Instance.PostInitialize());
+}
+//2. Abp.AspNetCore.AbpAspNetCoreModule
+/// <summary>
+/// 这个方法就是将服务类转成控制器的
+/// </summary>
+private void AddApplicationParts()
+{
+    var configuration = IocManager.Resolve<AbpAspNetCoreConfiguration>();
+    var partManager = IocManager.Resolve<ApplicationPartManager>();//微软的库，动态的添加视图和控制器
+    ...
+        //这里就是将服务类转换为控制器的过程
+        var controllerAssemblies = configuration.ControllerAssemblySettings.Select(s => s.Assembly).Distinct();
+    foreach (var controllerAssembly in controllerAssemblies)
+    {
+        partManager.AddApplicationPartsIfNotAddedBefore(controllerAssembly);
+    }
+    ...
+}
+//3. Abp.AspNetCore.Mvc.Conventions.AbpAppServiceConvention 核心类
+/// <summary>
+/// 核心实现
+/// </summary>
+/// <param name="application"></param>
+public void Apply(ApplicationModel application)
+{
+   foreach (var controller in application.Controllers)
+    {
+        var tempName = controller.ControllerName;
+        var type = controller.ControllerType.AsType();
+        var configuration = GetControllerSettingOrNull(type);
+
+        //判断当前控制器是否由服务直接生成，是的话移除后缀。并生成相应的路径配置
+        if (typeof(IApplicationService).GetTypeInfo().IsAssignableFrom(type))
+        {
+            //移除类名的后缀："AppService", "ApplicationService" 
+            controller.ControllerName = controller.ControllerName.RemovePostFix(ApplicationService.CommonPostfixes);
+            Debug.WriteLine($"controller.ControllerName={controller.ControllerName},configuration.ModuleName:{configuration?.ModuleName}");
+            configuration?.ControllerModelConfigurer(controller);
+
+            //把service生成的api模块配置成area，本身的控制器视图页已经有了area的路由配置，无需处理
+            ConfigureArea(controller, configuration);
+            //配置web api，这个方法内部也使用到了RemoteServiceAttribute
+            ConfigureRemoteService(controller, configuration);
+        }
+        else
+        {
+            //如果是由控制器类实例得来的，判断是否有RemoteService标签。如果有，也要生成相应的 路径。
+            var remoteServiceAtt = ReflectionHelper.GetSingleAttributeOrDefault<RemoteServiceAttribute>(type.GetTypeInfo());
+            if (remoteServiceAtt != null && remoteServiceAtt.IsEnabledFor(type))
+            {
+                ConfigureRemoteService(controller, configuration);
+            }
+        }
+    }
+}
+```
+

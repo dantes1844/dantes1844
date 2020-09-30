@@ -2,7 +2,8 @@
 title: 【ABP框架笔记】 5.控制器自动生成api接口的事项
 permalink: abp-controller-to-api
 date: 2020-04-30 16:40:58
-tags:     
+tags: [ABP,.net core 3.0,ef core 3.0]
+categories:   
     - [框架]
     - [ABP]
 ---
@@ -66,6 +67,6 @@ tags:
 
 
 
-在发送请求时，后端会报错，提示有歧义的请求。所以在添加服务类或者控制器的时候，要避免出现相同路径出现。
+在发送请求时，后端会报错，提示有歧义的请求。所以在添加服务类或者控制器的时候，要避免相同路径出现。
 
 ![相同路径的api报错](AmbiguousMatchException.png)
